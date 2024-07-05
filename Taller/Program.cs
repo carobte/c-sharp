@@ -47,25 +47,28 @@ public class Program
 
             {
                 case 1:
+                    Console.Clear();
                     AddProduct();
-                    PrintProducts();
                     break;
                 case 2:
+                    Console.Clear();
                     UpdateProduct();
-                    PrintProducts();
                     break;
                 case 3:
+                    Console.Clear();
                     DeleteProduct();
-                    PrintProducts();
                     break;
                 case 4:
+                    Console.Clear();
                     PrintProducts();
                     break;
                 case 5:
+                    Console.Clear();
                     Console.WriteLine("Adiós, vuelva pronto...");
                     flag = false; // Rompemos el ciclo while para que finalice el programa
                     break;
                 default:
+                    Console.Clear();
                     Console.WriteLine("Opción inválida, intente nuevamente");
                     break;
             }
@@ -74,27 +77,30 @@ public class Program
 
     static void PrintProducts()
     {
+        Console.WriteLine("");
+
         double total = 0;
 
         foreach (Product product in Products)
         {
-            Console.WriteLine($"Producto: {product.Name}  | Precio unitario: {product.Price:C}  |  Cantidad: {product.Quantity}  |  Total: {(product.Quantity * product.Price):C}");
+            Console.WriteLine($"Producto: {product.Name,-25}  | Precio unitario: {product.Price,-25:C}  |  Cantidad: {product.Quantity,-15}  |  Total: {(product.Quantity * product.Price),-25:C}");
             total += product.Quantity * product.Price;
         }
 
         Console.WriteLine($"Total: {total:C}");
+        Console.WriteLine("");
     }
 
     static void AddProduct()
     {
 
-        Console.WriteLine("Escribe el nombre del producto a ingresar");
+        Console.Write("Escribe el nombre del producto a ingresar ");
         string? name = Console.ReadLine().ToLower();
 
-        Console.WriteLine($"Escribe la cantidad del {name}");
+        Console.Write($"Escribe la cantidad del {name} ");
         int quantity = Convert.ToInt32(Console.ReadLine());
 
-        Console.WriteLine($"Escribe el precio unitario del {name}");
+        Console.Write($"Escribe el precio unitario del {name} ");
         double price = Convert.ToDouble(Console.ReadLine());
 
         if (!string.IsNullOrWhiteSpace(name))
@@ -119,7 +125,7 @@ public class Program
             {
                 Products.Remove(productFinded);
                 Console.WriteLine($"{productFinded.Name} fue eliminado satisfactoriamente");
-            } 
+            }
         }
     }
 
