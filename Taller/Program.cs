@@ -1,5 +1,4 @@
-﻿using System.Numerics;
-
+﻿
 public class Product
 {
     // Creamos la plantilla de un producto
@@ -22,6 +21,8 @@ public class Program
     static List<Product> Products = new List<Product>();
     public static void Main()
     {
+        // Datos quemados para mostrar
+
         Products.Add(new Product("papa", 10, 10.500));
         Products.Add(new Product("tomate", 1, 200));
         Products.Add(new Product("cebolla", 1, 1000));
@@ -31,7 +32,7 @@ public class Program
         while (flag)
         {
             Console.WriteLine(" _______________________________________________________________________________________________ ");
-            Console.WriteLine("|                                        INVENTARIO                                             |");
+            Console.WriteLine("|                                        Menu                                                   |");
             Console.WriteLine("|_______________________________________________________________________________________________|");
             Console.WriteLine("|                                    1. Agregar producto                                        |");
             Console.WriteLine("|                                    2. Modificar producto                                      |");
@@ -39,7 +40,7 @@ public class Program
             Console.WriteLine("|                                    4. Listar productos                                        |");
             Console.WriteLine("|                                    5. Salir                                                   |");
             Console.WriteLine("|_______________________________________________________________________________________________|");
-            Console.Write("INGRESE OPCION: ");
+            Console.Write("Ingresa una opción: ");
 
             int? option = Convert.ToInt32(Console.ReadLine()); // solicitamos al usuario la opción
 
@@ -78,16 +79,19 @@ public class Program
     static void PrintProducts()
     {
         Console.WriteLine("");
+        Console.WriteLine($"{"Producto:",-25} | {"Precio unitario:",-25}  |  {"Cantidad:",-15}   |  {"Total:",-25}");
+        Console.WriteLine("");
 
         double total = 0;
 
         foreach (Product product in Products)
         {
-            Console.WriteLine($"Producto: {product.Name,-25}  | Precio unitario: {product.Price,-25:C}  |  Cantidad: {product.Quantity,-15}  |  Total: {(product.Quantity * product.Price),-25:C}");
+            Console.WriteLine($"{product.Name,-24}  | {product.Price,-25:C}  |   {product.Quantity,-15}  |   {(product.Quantity * product.Price),-25:C}");
             total += product.Quantity * product.Price;
         }
 
         Console.WriteLine($"Total: {total:C}");
+
         Console.WriteLine("");
     }
 
