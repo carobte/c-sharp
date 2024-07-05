@@ -1,4 +1,6 @@
-﻿public class Product
+﻿using System.Numerics;
+
+public class Product
 {
     // Creamos la plantilla de un producto
     // Keys que va a tener cada producto:
@@ -28,15 +30,15 @@ public class Program
         bool flag = true; // bandera para el menú
         while (flag)
         {
-            Console.WriteLine("#################################################################################################");
-            Console.WriteLine("#                                        INVENTARIO                                           #");
-            Console.WriteLine("#################################################################################################");
-            Console.WriteLine("1. Agregar producto");
-            Console.WriteLine("2. Modificar producto");
-            Console.WriteLine("3. Eliminar producto");
-            Console.WriteLine("4. Listar productos");
-            Console.WriteLine("5. Salir");
-            Console.WriteLine("-----------------------------------------------------------------------------------------------");
+            Console.WriteLine(" _______________________________________________________________________________________________ ");
+            Console.WriteLine("|                                        INVENTARIO                                             |");
+            Console.WriteLine("|_______________________________________________________________________________________________|");
+            Console.WriteLine("|                                    1. Agregar producto                                        |");
+            Console.WriteLine("|                                    2. Modificar producto                                      |");
+            Console.WriteLine("|                                    3. Eliminar producto                                       |");
+            Console.WriteLine("|                                    4. Listar productos                                        |");
+            Console.WriteLine("|                                    5. Salir                                                   |");
+            Console.WriteLine("|_______________________________________________________________________________________________|");
             Console.Write("INGRESE OPCION: ");
 
             int? option = Convert.ToInt32(Console.ReadLine()); // solicitamos al usuario la opción
@@ -49,10 +51,12 @@ public class Program
                     PrintProducts();
                     break;
                 case 2:
-                    Console.WriteLine("Modificando...");
+                    UpdateProduct();
+                    PrintProducts();
                     break;
                 case 3:
-                    Console.WriteLine("Eliminando...");
+                    DeleteProduct();
+                    PrintProducts();
                     break;
                 case 4:
                     PrintProducts();
@@ -70,10 +74,15 @@ public class Program
 
     static void PrintProducts()
     {
+        double total = 0;
+
         foreach (Product product in Products)
         {
-            Console.WriteLine($"Producto: {product.Name} | Precio unitario: {product.Price} | Cantidad: {product.Quantity}");
+            Console.WriteLine($"Producto: {product.Name}  | Precio unitario: {product.Price:C}  |  Cantidad: {product.Quantity}  |  Total: {(product.Quantity * product.Price):C}");
+            total += product.Quantity * product.Price;
         }
+
+        Console.WriteLine($"Total: {total:C}");
     }
 
     static void AddProduct()
@@ -102,11 +111,46 @@ public class Program
 
         Product? productFinded = Products.Find(product => product.Name == name);
 
-        if(productFinded != null)
+        if (productFinded != null)
         {
-            Products.Remove(productFinded);
+            Console.WriteLine($"¿Está seguro que desea eliminar {productFinded.Name}?");
+            string? confirmacion = Console.ReadLine();
+            if (!string.IsNullOrEmpty(confirmacion) && confirmacion.ToLower() == "si")
+            {
+                Products.Remove(productFinded);
+                Console.WriteLine($"{productFinded.Name} fue eliminado satisfactoriamente");
+            } 
         }
+    }
 
+    static void UpdateProduct()
+    {
+        Console.WriteLine("Escribe el nombre del producto a editar");
+        string? name = Console.ReadLine().ToLower();
+
+        Console.WriteLine($"Escribe la nueva cantidad de {name}");
+        int newQuantity = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine($"Escribe el nuevo precio unitario de {name}");
+        double newPrice = Convert.ToDouble(Console.ReadLine());
+
+        /*         foreach (Product product in Products)
+        {
+            if (product.Name == name)
+            {
+                product.Price = newPrice;
+                product.Quantity = newQuantity;
+            }
+        } */
+
+        Product? productFinded = Products.Find(product => product.Name == name);
+
+        if (productFinded != null)
+        {
+            productFinded.Quantity = newQuantity;
+            productFinded.Price = newPrice;
+            Console.WriteLine($"{productFinded.Name} fue editado satisfactoriamente");
+        }
     }
 
 }
