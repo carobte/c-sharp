@@ -43,33 +43,27 @@ public class Program
             Console.Write("Ingresa una opción: ");
 
             int? option = Convert.ToInt32(Console.ReadLine()); // solicitamos al usuario la opción
-
+            Console.Clear();
             switch (option) // según la opción que ingrese...
 
             {
                 case 1:
-                    Console.Clear();
                     AddProduct();
                     break;
                 case 2:
-                    Console.Clear();
                     UpdateProduct();
                     break;
                 case 3:
-                    Console.Clear();
                     DeleteProduct();
                     break;
                 case 4:
-                    Console.Clear();
                     PrintProducts();
                     break;
                 case 5:
-                    Console.Clear();
                     Console.WriteLine("Adiós, vuelva pronto...");
                     flag = false; // Rompemos el ciclo while para que finalice el programa
                     break;
                 default:
-                    Console.Clear();
                     Console.WriteLine("Opción inválida, intente nuevamente");
                     break;
             }
@@ -162,6 +156,24 @@ public class Program
             Console.WriteLine($"{productFinded.Name} fue editado satisfactoriamente");
         }
     }
+
+
+
+    /*   
+    ________________________________________________________________________________________________________________  
+    
+    public static void test()
+
+    // Sintaxis simplificada de diccionarios en C#:
+
+    {
+        Dictionary<string, int> numeros = []; // expresión de colección -> lista, array, diccionario, enumerate
+        numeros["uno"] = 1;
+    } 
+
+    ________________________________________________________________________________________________________________
+    
+    */
 
 }
 
