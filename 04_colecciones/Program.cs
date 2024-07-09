@@ -96,7 +96,7 @@ double total = 0;
         Console.WriteLine(nota);
         total = total + nota;
  }
-
+ 
  Console.WriteLine($"count: {listaNotasNumber.Count()}");
  Console.WriteLine($"total: {total}");
 
