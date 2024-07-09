@@ -1,15 +1,12 @@
-﻿Console.Clear();
+﻿/* Console.Clear();
 Console.WriteLine("Hello, World!");
 
 // Variables:
-
-/*
 
 - Cadenas (string, char)
 - Numeros (int, float, double, byte, long, decimal, unit)
 - Booleanos (true, false)
 
-*/
 
 char nombre = 'J';
 Console.WriteLine(nombre.GetType().Name);
@@ -98,14 +95,43 @@ var numerosDuplicadosList = numerosArray.Select(num => num * 2).ToList();
 
 Console.WriteLine("Ordenados:");
 
-var numerosListAsc = numerosArray.OrderBy(num => num).ToList(); 
+var numerosListAsc = numerosArray.OrderBy(num => num).ToList();
 
-foreach(var numero in numerosListAsc){
+foreach (var numero in numerosListAsc)
+{
     Console.WriteLine(numero);
 }
 
-var numerosListDesc = numerosArray.OrderByDescending(num => num).ToList(); 
+var numerosListDesc = numerosArray.OrderByDescending(num => num).ToList();
 
-foreach(var numero in numerosListDesc){
+foreach (var numero in numerosListDesc)
+{
     Console.WriteLine(numero);
 }
+ */
+
+// Ejemplo métodos linq
+public class Program{
+
+    Persona persona = new("Cami", "Barreneche", 28, true);
+    public static void Main(string[] args){
+
+    }
+}
+
+public class Persona
+{
+    public string? Nombre { set; get; }
+    public string? Apellido { set; get; }
+    public int Edad { set; get; }
+    public bool Activo { set; get; }
+
+    public Persona(string? nombre, string? apellido, int edad, bool activo)
+    {
+        Nombre = nombre;
+        Apellido = apellido;
+        Edad = edad;
+        Activo = activo;
+    }
+}
+
