@@ -31,8 +31,9 @@
     - `Take`: Devuelve un número especificado de elementos desde el inicio de una secuencia.
     - `Skip`: Omite un número especificado de elementos desde el inicio de una secuencia.
 Estos métodos permiten manipular y consultar datos de manera eficiente y expresiva en C# utilizando LINQ, mejorando la legibilidad y mantenibilidad del código.
-Nuevo
-07:52
+
+### Ejemplos
+
 Por supuesto, aquí te dejo ejemplos básicos de cada uno de los métodos mencionados de LINQ en C#. Todos estos ejemplos suponen que trabajamos con una colección de objetos `Person` con propiedades como `Name`, `Age`, `City`, etc.
 ### Métodos de filtrado:
 1. **Where**
