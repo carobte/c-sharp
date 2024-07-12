@@ -48,11 +48,11 @@ void CrearVenta()
     Console.WriteLine("La venta fue registrada satisfactoriamente");
 }
 
-void MostrarVentas()
+void MostrarVentas(List<Venta> lista)
 {
-    foreach (Venta venta in listaVentas)
+    foreach (Venta venta in lista)
     {
-        Console.WriteLine($"================= Factura ==================");
+        Console.WriteLine($"====================== Factura =======================");
         Console.WriteLine($"ID:                     {venta.Id}");
         Console.WriteLine($"Fecha de Venta:         {venta.FechaDeVenta}");
         Console.WriteLine($"Vendedor:               {venta.Vendedor}");
@@ -61,7 +61,7 @@ void MostrarVentas()
         Console.WriteLine($"Cantidad:               {venta.CantidadProducto}");
         Console.WriteLine($"Tiempo de Garantía:     {venta.TiempoGarantia}");
         Console.WriteLine($"Total Facturado:        {venta.ValorProducto * venta.CantidadProducto:C} COP");
-        Console.WriteLine("============================================\n");
+        Console.WriteLine("======================================================\n");
     }
 
 }
@@ -91,19 +91,57 @@ void PromedioVentas()
 
 void MostrarVendedorDelMes()
 {
-    var empleadoMes = listaVentas.GroupBy(venta => venta.Vendedor) // Agrupamos por vendedor
-    .OrderByDescending(total => total.Sum(venta => venta.CantidadProducto * venta.ValorProducto)) // sumamos las ventas que hizo
+    var mesActual = DateTime.Now.Month;
+    var empleadoMes = listaVentas.Where(venta => venta.FechaDeVenta.Month == mesActual)
+    .GroupBy(venta => venta.Vendedor) // Agrupamos por vendedor
+    .OrderByDescending(venta => venta.Sum(venta => venta.CantidadProducto * venta.ValorProducto)) // sumamos las ventas que hizo
     .FirstOrDefault();
     Console.WriteLine(empleadoMes.Key);
 }
 
 void MostrarCompradorDelMes()
 {
-    var clienteMes = listaVentas.GroupBy(venta => venta.Comprador)
-    .OrderByDescending(total => total.Sum(venta => venta.CantidadProducto * venta.ValorProducto))
+    var mesActual = DateTime.Now.Month;
+    var clienteMes = listaVentas.Where(venta => venta.FechaDeVenta.Month == mesActual)
+    .GroupBy(venta => venta.Comprador)
+    .OrderByDescending(venta => venta.Sum(venta => venta.CantidadProducto * venta.ValorProducto))
     .FirstOrDefault();
     Console.WriteLine(clienteMes.Key);
 }
+
+void FiltrarVentas()
+{
+    Console.WriteLine("Escribe la fecha para encontrar las ventas realizadas después. Formato: día/mes/año");
+    var fecha = Convert.ToDateTime(Console.ReadLine());
+    var ventasFecha = listaVentas.Where(venta => venta.FechaDeVenta.Date > fecha.Date).ToList(); // Filtramos las compras de la fecha ingresada por el usuario
+    MostrarVentas(ventasFecha);
+}
+
+void FiltrarVendedoresValor()
+{
+    Console.WriteLine("Escribe el valor de referencia: ");
+    var referencia = Convert.ToDouble(Console.ReadLine());
+    var vendedores = listaVentas
+
+    .GroupBy(venta => venta.Vendedor)
+    .Where(grupo => grupo.Sum(venta => venta.CantidadProducto * venta.ValorProducto) > referencia);
+
+    Console.WriteLine($"Los vendedores que realizaron ventas por encima de {referencia:C} COP son: ");
+
+    foreach (var item in vendedores)
+    {
+        Console.WriteLine(item.Key);
+    }
+
+}
+/* 
+void VentasMensuales()
+{
+    var ventasMes = listaVentas.GroupBy(venta => venta.FechaDeVenta.Month)
+    .Sum(mes => mes.Key);
+
+} */
+
 
 
 void Menu()
@@ -120,16 +158,16 @@ void Menu()
         Console.WriteLine("3. Imprimir todas las facturas");
         Console.WriteLine("4. Empleado del mes");
         Console.WriteLine("5. Cliente del mes");
+        Console.WriteLine("6. Filtrar después de una fecha específica");
+        Console.WriteLine("7. Vendedores con ventas por encima de un valor");
+        Console.WriteLine("8. Calcular ventas mensuales");
+
         Console.WriteLine("===========================================");
         Console.Write("Selecciona una opción: ");
 
         string opcion = Console.ReadLine();
         switch (opcion)
         {
-            case "0":
-                Console.WriteLine("Hasta luego, vuelva pronto");
-                continuar = false; // Rompemos el ciclo
-                break;
             case "1":
                 CrearVenta();
                 PausarMenu();
@@ -139,7 +177,7 @@ void Menu()
                 PausarMenu();
                 break;
             case "3":
-                MostrarVentas();
+                MostrarVentas(listaVentas);
                 PausarMenu();
                 break;
             case "4":
@@ -149,6 +187,22 @@ void Menu()
             case "5":
                 MostrarCompradorDelMes();
                 PausarMenu();
+                break;
+            case "6":
+                FiltrarVentas();
+                PausarMenu();
+                break;
+            case "7":
+                FiltrarVendedoresValor();
+                PausarMenu();
+                break;
+            case "8":
+                Console.WriteLine("Ventas mensuales aquí");
+                PausarMenu();
+                break;
+            case "0":
+                Console.WriteLine("Hasta luego, vuelva pronto");
+                continuar = false; // Rompemos el ciclo
                 break;
             default:
                 Console.WriteLine("Opción no válida, intenta de nuevo");
