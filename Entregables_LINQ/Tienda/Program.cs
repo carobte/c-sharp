@@ -2,8 +2,8 @@
 
 // Datos quemados 
 
-var id = Guid.NewGuid();
-var fecha = DateTime.Now;
+var id = Guid.NewGuid(); // Global Unique Identifier
+var fecha = DateTime.Now; // Fecha y hora del momento 
 
 var id2 = Guid.NewGuid();
 var fecha2 = DateTime.Now;
@@ -22,7 +22,7 @@ listaVentas.Add(new Venta(id4, fecha4, "nevera", 7000000, 1, "caro", "val", "1 a
 
 void CrearVenta()
 {
-    var id = Guid.NewGuid();
+    var id = Guid.NewGuid(); 
     var fecha = DateTime.Now;
 
     Console.WriteLine("Ingresa el nombre del producto: ");
@@ -96,7 +96,7 @@ void MostrarVendedorDelMes()
     .GroupBy(venta => venta.Vendedor) // Agrupamos por vendedor
     .OrderByDescending(venta => venta.Sum(venta => venta.CantidadProducto * venta.ValorProducto)) // sumamos las ventas que hizo
     .FirstOrDefault();
-    Console.WriteLine(empleadoMes.Key);
+    Console.WriteLine($"El empleado del mes es: {empleadoMes.Key}");
 }
 
 void MostrarCompradorDelMes()
@@ -106,7 +106,7 @@ void MostrarCompradorDelMes()
     .GroupBy(venta => venta.Comprador)
     .OrderByDescending(venta => venta.Sum(venta => venta.CantidadProducto * venta.ValorProducto))
     .FirstOrDefault();
-    Console.WriteLine(clienteMes.Key);
+    Console.WriteLine($"El cliente del mes es: {clienteMes.Key}");
 }
 
 void FiltrarVentas()
@@ -128,21 +128,12 @@ void FiltrarVendedoresValor()
 
     Console.WriteLine($"Los vendedores que realizaron ventas por encima de {referencia:C} COP son: ");
 
-    foreach (var item in vendedores)
+    foreach (var vendedor in vendedores)
     {
-        Console.WriteLine(item.Key);
+        Console.WriteLine(vendedor.Key);
     }
 
 }
-/* 
-void VentasMensuales()
-{
-    var ventasMes = listaVentas.GroupBy(venta => venta.FechaDeVenta.Month)
-    .Sum(mes => mes.Key);
-
-} */
-
-
 
 void Menu()
 {
@@ -211,7 +202,6 @@ void Menu()
     }
 }
 
-Menu();
 
 void PausarMenu()
 {
@@ -219,6 +209,9 @@ void PausarMenu()
     Console.ReadKey();
 }
 
+Menu(); // Ejecución Menu
+
+// Clase Venta con sus atributos
 public class Venta
 {
     public Guid Id { set; get; }
@@ -229,6 +222,8 @@ public class Venta
     public string Vendedor { set; get; }
     public string Comprador { set; get; }
     public string TiempoGarantia { set; get; }
+
+// Constructor
 
     public Venta
     (
