@@ -69,3 +69,18 @@ var estudiante = new Estudiante("Caro", "Universitario", 26);
 Console.WriteLine($"Nombre de estudiante: {estudiante.Nombre}, grado: {estudiante.Grado}, edad: {estudiante.Edad} años");
 estudiante.GetEdad();
 estudiante.SetEdad(27);
+
+// -------------------- Ejercicios Rectangulo --------------------
+
+var rectangulo = new Rectangulo(num1, num2);
+Console.WriteLine($"El área del rectangulo es {rectangulo.CalcularArea()}");
+
+// -------------------- Ejercicios Circulo --------------------
+
+var circulo = new Circulo(4);
+Console.WriteLine($"La circunferencia del circulo con radio 4.5 es: {circulo.CalcularCircunferencia()}");
+
+// -------------------- Ejercicios Empleado --------------------
+
+var empleado = new Empleado("Disnery", "Administradora", 1700000);
+empleado.MostrarDetalles();
