@@ -6,11 +6,6 @@ using System.Threading.Tasks;
 namespace POO2.Models;
 public class Estudiante
 {
-    // Estas son las propiedades o atributos (del estudiante)
-    // Abstacción: Tener solo lo necesario de propiedades (Evitar datos innecesarios)
-    // Encapsulamiento: Ocultar los detalles de implementación (Evitar acceso directo a los datos) Public, Internal, Protected(solo sirve en esta clase o el alguna de las herencias), Private (solo sirve entre la clase)
-    // Herencia: Heredar propiedades y métodos de una clase padre (Evitar repetir código)
-    // Polimorfismo: Usar objetos de diferentes clases con el mismo nombre y comportamiento (Evitar casts)
     public int Id { get; set; }
     public string Nombre { get; set; }
     public string Apellido { get; set; }
