@@ -23,10 +23,7 @@ namespace POO3.Models
         }
 
         public double CalcularIMC(){
-            return 0.5;
+            return this.Peso / Math.Pow(this.Estatura, 2);
         }
-
-
-
     }
 }

@@ -22,9 +22,9 @@ namespace POO3.Models
             Console.WriteLine("Jugador...");
         }
 
-        public int CalcularEdad()
+        public byte CalcularEdad()
         {
-            return 1;
+            return Convert.ToByte(DateTime.Now.Year - this.FechaNacimiento.Year) ;
         }
     }
 }
