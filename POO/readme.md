@@ -21,8 +21,14 @@
 
 - Elegir qué datos son necesarios. Filtrar los datos y la información según el programa que se esté desarrollando.
 
+## - Encapsulamiento
+
+- Ocultar los detalles de implementación (Evitar acceso directo a los datos) Public, Internal, Protected(solo sirve en esta clase o el alguna de las herencias), Private (solo sirve entre la clase)
+
 ## - Herencia
+
+- Heredar propiedades y métodos de una clase padre (Evitar repetir código)
 
 ## - Polimorfismo
 
-## - Encapsulamiento
+- Usar objetos de diferentes clases con el mismo nombre y comportamiento (Evitar casts)
