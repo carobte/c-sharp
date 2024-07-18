@@ -10,9 +10,16 @@ namespace POO_Entregable_Biblioteca.Models
         private Guid Id { get; set; }
         public List<Libro> Libros { get; set; }
 
+        public Biblioteca()
+        {
+            this.Id = Guid.NewGuid();
+            this.Libros = new List<Libro>();
+        }
+
         public void AgregarLibro(Libro nuevolibro)
         {
             Libros.Add(nuevolibro);
+            Console.WriteLine($"El libro {nuevolibro.Titulo} fue agregado satisfactoriamente");
         }
 
         public void EliminarLibro()
@@ -30,7 +37,7 @@ namespace POO_Entregable_Biblioteca.Models
             {
                 Console.WriteLine($"¿Está seguro que desea eliminar {libroEncontrado.Titulo} de la lista (si - no)?");
                 string? confirmacion = Console.ReadLine();
-                if (confirmacion.ToLower() == "si")
+                if (confirmacion.Equals("si", StringComparison.CurrentCultureIgnoreCase))
                 {
                     Libros.Remove(libroEncontrado);
                     Console.WriteLine($"{libroEncontrado.Titulo} fue eliminado satisfactoriamente");
