@@ -1,2 +1,89 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using POO_Entregable_Biblioteca.Models;
+
+var biblioteca = new Biblioteca();
+
+void Menu()
+{
+    CrearLibrosEJ();
+
+    bool continuar = true; // Bandera para el menú
+    while (continuar)
+    {
+        Console.WriteLine("===========================================");
+        Console.WriteLine("             Menú de Biblioteca            ");
+        Console.WriteLine("===========================================");
+        Console.WriteLine("0. Cerrar");
+        Console.WriteLine("1. Mostrar libros");
+        Console.WriteLine("2. Agregar libro");
+        Console.WriteLine("3. Eliminar libro");
+        Console.WriteLine("4. ");
+        Console.WriteLine("5. ");
+        Console.WriteLine("6. ");
+        Console.WriteLine("7. ");
+        Console.WriteLine("8. ");
+        Console.WriteLine("===========================================");
+        Console.Write("Selecciona una opción: ");
+
+        string opcion = Console.ReadLine();
+        switch (opcion)
+        {
+            case "1":
+                biblioteca.MostrarLibros();
+                PausarMenu();
+                break;
+            case "2":
+                biblioteca.AgregarLibro();
+                PausarMenu();
+                break;
+            case "3":
+                biblioteca.EliminarLibro();
+                PausarMenu();
+                break;
+            case "4":
+                PausarMenu();
+                break;
+            case "5":
+                PausarMenu();
+                break;
+            case "6":
+                PausarMenu();
+                break;
+            case "7":
+                PausarMenu();
+                break;
+            case "8":
+                PausarMenu();
+                break;
+            case "0":
+                Console.WriteLine("Hasta luego, vuelva pronto");
+                continuar = false; // Rompemos el ciclo
+                break;
+            default:
+                Console.WriteLine("Opción no válida, intenta de nuevo");
+                break;
+        }
+    }
+}
+
+void PausarMenu()
+{
+    Console.WriteLine("Presiona una tecla para continuar");
+    Console.ReadKey();
+}
+
+// Libros quemados para probar métodos 
+void CrearLibrosEJ()
+{
+
+    var nuevoLibro1 = new Libro("J.K Rowling", "0-7645-2641-1", "fantasia", 65000, 1997, "Harry Potter y la piedra filosofal ");
+    var nuevoLibro2 = new Libro("J.K Rowling", "0-7645-2641-2", "fantasia", 65000, 1998, "Harry Potter y la cámara secreta");
+    var nuevoLibro3 = new Libro("J.K Rowling", "0-7645-2641-3", "fantasia", 65000, 1999, "Harry Potter y el prisionero de Azkaban");
+    var nuevoLibro4 = new Libro("Emily Bronte", "0-7645-2641-4", "novela", 65000, 1847, "Cumbres Borrascosas");
+
+    biblioteca.Libros.Add(nuevoLibro1);
+    biblioteca.Libros.Add(nuevoLibro2);
+    biblioteca.Libros.Add(nuevoLibro3);
+    biblioteca.Libros.Add(nuevoLibro4);
+
+}
+Menu(); // Ejecución Menu
