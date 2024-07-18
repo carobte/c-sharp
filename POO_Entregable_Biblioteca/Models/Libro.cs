@@ -34,7 +34,7 @@ namespace POO_Entregable_Biblioteca.Models
             ISBN: {this.ISBN},
             Año de publicación: {this.AñoPublicacion},
             Genero: {this.Genero},
-            Precio: {this.Precio}
+            Precio: {this.Precio:C} COP
             ----------------------------------------------------------------------------------
             ");
         }

@@ -9,18 +9,18 @@ void Menu()
     bool continuar = true; // Bandera para el menú
     while (continuar)
     {
-        Console.WriteLine("===========================================");
-        Console.WriteLine("             Menú de Biblioteca            ");
-        Console.WriteLine("===========================================");
+        Console.WriteLine("======================================================================================");
+        Console.WriteLine("                                  Menú de Biblioteca                                  ");
+        Console.WriteLine("======================================================================================");
         Console.WriteLine("0. Cerrar");
         Console.WriteLine("1. Mostrar libros");
         Console.WriteLine("2. Agregar libro");
         Console.WriteLine("3. Eliminar libro");
-        Console.WriteLine("4. ");
-        Console.WriteLine("5. ");
-        Console.WriteLine("6. ");
-        Console.WriteLine("7. ");
-        Console.WriteLine("8. ");
+        Console.WriteLine("4. Buscar por un género específico");
+        Console.WriteLine("5. Buscar por un autor específico");
+        Console.WriteLine("6. Buscar por un rango de años");
+        Console.WriteLine("7. Ordenar libros por año de publicación");
+        Console.WriteLine("8. Aplicar descuento a un libro"); // (?)
         Console.WriteLine("===========================================");
         Console.Write("Selecciona una opción: ");
 
@@ -28,7 +28,7 @@ void Menu()
         switch (opcion)
         {
             case "1":
-                biblioteca.MostrarLibros();
+                biblioteca.MostrarLibros(biblioteca.Libros);
                 PausarMenu();
                 break;
             case "2":
@@ -40,6 +40,7 @@ void Menu()
                 PausarMenu();
                 break;
             case "4":
+            biblioteca.BuscarPorGenero();
                 PausarMenu();
                 break;
             case "5":
@@ -49,6 +50,7 @@ void Menu()
                 PausarMenu();
                 break;
             case "7":
+                biblioteca.OrdenarPorAño();
                 PausarMenu();
                 break;
             case "8":
@@ -75,7 +77,7 @@ void PausarMenu()
 void CrearLibrosEJ()
 {
 
-    var nuevoLibro1 = new Libro("J.K Rowling", "0-7645-2641-1", "fantasia", 65000, 1997, "Harry Potter y la piedra filosofal ");
+    var nuevoLibro1 = new Libro("J.K Rowling", "0-7645-2641-1", "fantasia, magia", 65000, 1997, "Harry Potter y la piedra filosofal ");
     var nuevoLibro2 = new Libro("J.K Rowling", "0-7645-2641-2", "fantasia", 65000, 1998, "Harry Potter y la cámara secreta");
     var nuevoLibro3 = new Libro("J.K Rowling", "0-7645-2641-3", "fantasia", 65000, 1999, "Harry Potter y el prisionero de Azkaban");
     var nuevoLibro4 = new Libro("Emily Bronte", "0-7645-2641-4", "novela", 65000, 1847, "Cumbres Borrascosas");
@@ -86,4 +88,5 @@ void CrearLibrosEJ()
     biblioteca.Libros.Add(nuevoLibro4);
 
 }
+
 Menu(); // Ejecución Menu

@@ -16,9 +16,9 @@ namespace POO_Entregable_Biblioteca.Models
             this.Libros = new List<Libro>();
         }
 
-        public void MostrarLibros()
+        public void MostrarLibros(List<Libro> ListaLibros)
         {
-            foreach (var libro in Libros)
+            foreach (var libro in ListaLibros)
             {
                 libro.MostrarDetalles();
             }
@@ -35,7 +35,7 @@ namespace POO_Entregable_Biblioteca.Models
             string? autor = Console.ReadLine();
 
             Console.WriteLine($"Escribe el ISBN de {titulo}");
-            string? isbn = Console.ReadLine();
+            string? ISBN = Console.ReadLine();
 
             Console.WriteLine($"Escribe el género de {titulo}");
             string? genero = Console.ReadLine();
@@ -46,7 +46,7 @@ namespace POO_Entregable_Biblioteca.Models
             Console.WriteLine($"Escribe el año de publicación de {titulo}");
             int añoPublicacion = Convert.ToInt32(Console.ReadLine());
 
-            var nuevoLibro = new Libro(autor, isbn, genero,precio, añoPublicacion, titulo);
+            var nuevoLibro = new Libro(autor, ISBN, genero, precio, añoPublicacion, titulo);
 
             Libros.Add(nuevoLibro);
             Console.WriteLine($"El libro {nuevoLibro.Titulo} fue agregado satisfactoriamente");
@@ -73,5 +73,68 @@ namespace POO_Entregable_Biblioteca.Models
                 }
             }
         }
+        public void BuscarPorGenero()
+        {
+            Console.Write("Ingresa el genero a buscar: ");
+            string? generoBuscar = Console.ReadLine().ToLower();
+
+            var librosEncontrados = Libros.FindAll(libro => libro.Genero.Contains(generoBuscar));
+
+            if (librosEncontrados.Count == 0)
+            {
+                Console.WriteLine($"No se encontraron libros del genero {generoBuscar} en el momento");
+            }
+            else
+            {
+                Console.WriteLine($"Libros del genero {generoBuscar}:");
+                MostrarLibros(librosEncontrados);
+            }
+        }
+
+        public void BuscarPorAutor()
+        {
+            Console.Write("Ingresa el autor a buscar: ");
+            string? autorBuscar = Console.ReadLine().ToLower();
+
+            var librosEncontrados = Libros.FindAll(libro => libro.Autor.Contains(autorBuscar));
+
+            if (librosEncontrados.Count == 0)
+            {
+                Console.WriteLine($"No se encontraron libros del autor {autorBuscar} en el momento");
+            }
+            else
+            {
+                Console.WriteLine($"Libros del autor {autorBuscar}:");
+                MostrarLibros(librosEncontrados);
+            }
+        }
+
+        
+/*         public void BuscarPorAño()
+        {
+            Console.Write("Ingresa el primer año del rango: ");
+            int añoMenor = Convert.ToInt32( Console.ReadLine());
+
+            var librosEncontrados = Libros.FindAll(libro => libro.Autor.Equals(autorBuscar));
+
+            if (librosEncontrados.Count == 0)
+            {
+                Console.WriteLine($"No se encontraron libros del autor {autorBuscar} en el momento");
+            }
+            else
+            {
+                Console.WriteLine($"Libros del autor {autorBuscar}:");
+                MostrarLibros(librosEncontrados);
+            }
+            
+        } */
+        
+
+        public void OrdenarPorAño (){
+            Console.WriteLine($"Libros ordenados por su año de publicación: ");            
+            var listaOrdenada = Libros.OrderBy(libro => libro.AñoPublicacion).ToList();
+            MostrarLibros(listaOrdenada);
+        }
     }
+
 }
