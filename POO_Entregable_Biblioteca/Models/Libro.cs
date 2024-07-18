@@ -27,12 +27,16 @@ namespace POO_Entregable_Biblioteca.Models
 
         public void MostrarDetalles()
         {
-            Console.WriteLine(@$"Libro: {this.Titulo}
+            Console.WriteLine(@$"
+            ----------------------------------------------------------------------------------
+            Libro: {this.Titulo}
             Autor: {this.Autor},
             ISBN: {this.ISBN},
             Año de publicación: {this.AñoPublicacion},
             Genero: {this.Genero},
-            Precio: {this.Precio}");
+            Precio: {this.Precio}
+            ----------------------------------------------------------------------------------
+            ");
         }
 
         public void AplicarDescuento(int descuento)
