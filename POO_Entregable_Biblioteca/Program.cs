@@ -16,12 +16,11 @@ void Menu()
         Console.WriteLine("1. Mostrar libros");
         Console.WriteLine("2. Agregar libro");
         Console.WriteLine("3. Eliminar libro");
-        Console.WriteLine("4. Buscar por un género específico");
-        Console.WriteLine("5. Buscar por un autor específico");
-        Console.WriteLine("6. Buscar por un rango de años");
-        Console.WriteLine("7. Ordenar libros por año de publicación");
-        Console.WriteLine("8. Aplicar descuento a un libro"); // (?)
-        Console.WriteLine("===========================================");
+        Console.WriteLine("4. Buscar");
+        Console.WriteLine("5. Ordenar libros por año de publicación");
+        Console.WriteLine("6. Aplicar descuento a un libro"); // (?)
+        Console.WriteLine("======================================================================================");
+
         Console.Write("Selecciona una opción: ");
 
         string opcion = Console.ReadLine();
@@ -40,22 +39,14 @@ void Menu()
                 PausarMenu();
                 break;
             case "4":
-                biblioteca.BuscarPorGenero();
+                MenuBuscar();
                 PausarMenu();
                 break;
             case "5":
-                biblioteca.BuscarPorAutor();
-                PausarMenu();
-                break;
-            case "6":
-                biblioteca.BuscarPorAños();
-                PausarMenu();
-                break;
-            case "7":
                 biblioteca.OrdenarPorAño();
                 PausarMenu();
                 break;
-            case "8":
+            case "6":
                 PausarMenu();
                 break;
             case "0":
@@ -66,6 +57,39 @@ void Menu()
                 Console.WriteLine("Opción no válida, intenta de nuevo");
                 break;
         }
+    }
+}
+
+void MenuBuscar()
+{
+    Console.WriteLine("======================================================================================");
+    Console.WriteLine("                                  Menú de Buscar                                  ");
+    Console.WriteLine("======================================================================================");
+    Console.WriteLine("0. Volver a menú principal");
+    Console.WriteLine("1. Buscar por género");
+    Console.WriteLine("2. buscar por autor");
+    Console.WriteLine("3. Buscar por rango de año");
+    Console.WriteLine("Elige una opcion:");
+    string opcion = Console.ReadLine();
+    switch (opcion)
+    {
+        case "1":
+            biblioteca.BuscarPorGenero();
+            PausarMenu();
+            break;
+        case "2":
+            biblioteca.BuscarPorAutor();
+            PausarMenu();
+            break;
+        case "3":
+            biblioteca.BuscarPorAños();
+            PausarMenu();
+            break;
+        case "0":
+            break;
+        default:
+            Console.WriteLine("Opción incorrecta, intenta de nuevo");
+            break;
     }
 }
 
