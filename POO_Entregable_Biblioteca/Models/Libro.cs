@@ -7,18 +7,16 @@ namespace POO_Entregable_Biblioteca.Models
 {
     public class Libro : Publicacion
     {
-        private Guid Id { get; set; }
         public string? Autor { get; set; }
-        public string? ISBN { get; set; }
+        public Guid ISBN { get; set; }
         public string? Genero { get; set; }
         public double Precio { get; set; }
 
 
-        public Libro(string autor, string isbn, string genero, double precio, int añoPublicacion, string titulo)
+        public Libro(string autor, string genero, double precio, int añoPublicacion, string titulo)
         {
-            this.Id = Guid.NewGuid();
             this.Autor = autor;
-            this.ISBN = isbn;
+            this.ISBN = Guid.NewGuid();
             this.Genero = genero;
             this.Precio = precio;
             this.AñoPublicacion = añoPublicacion;
@@ -34,7 +32,7 @@ namespace POO_Entregable_Biblioteca.Models
             ISBN: {this.ISBN},
             Año de publicación: {this.AñoPublicacion},
             Genero: {this.Genero},
-            Precio: {this.Precio}
+            Precio: {this.Precio:C} COP
             ----------------------------------------------------------------------------------
             ");
         }
