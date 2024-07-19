@@ -24,18 +24,13 @@ namespace POO_Entregable_Biblioteca.Models
             }
         }
 
-        public void AgregarLibro()
+        public static Libro PedirInfoLibro()
         {
-
-            // Libro que ingresará el usuario:
             Console.WriteLine("Escribe el nombre del libro que deseas agregar");
             string? titulo = Console.ReadLine();
 
             Console.WriteLine($"Escribe el nombre del autor de {titulo}");
             string? autor = Console.ReadLine();
-
-            Console.WriteLine($"Escribe el ISBN de {titulo}");
-            string? ISBN = Console.ReadLine();
 
             Console.WriteLine($"Escribe el género de {titulo}");
             string? genero = Console.ReadLine();
@@ -46,8 +41,13 @@ namespace POO_Entregable_Biblioteca.Models
             Console.WriteLine($"Escribe el año de publicación de {titulo}");
             int añoPublicacion = Convert.ToInt32(Console.ReadLine());
 
-            var nuevoLibro = new Libro(autor, ISBN, genero, precio, añoPublicacion, titulo);
+            var nuevoLibro = new Libro(autor, genero, precio, añoPublicacion, titulo);
+            return nuevoLibro;
+        }
 
+        public void AgregarLibro()
+        {
+            var nuevoLibro = PedirInfoLibro();
             Libros.Add(nuevoLibro);
             Console.WriteLine($"El libro {nuevoLibro.Titulo} fue agregado satisfactoriamente");
         }
@@ -109,29 +109,30 @@ namespace POO_Entregable_Biblioteca.Models
             }
         }
 
-        
-/*         public void BuscarPorAño()
+
+        /*         public void BuscarPorAño()
+                {
+                    Console.Write("Ingresa el primer año del rango: ");
+                    int añoMenor = Convert.ToInt32( Console.ReadLine());
+
+                    var librosEncontrados = Libros.FindAll(libro => libro.Autor.Equals(autorBuscar));
+
+                    if (librosEncontrados.Count == 0)
+                    {
+                        Console.WriteLine($"No se encontraron libros del autor {autorBuscar} en el momento");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Libros del autor {autorBuscar}:");
+                        MostrarLibros(librosEncontrados);
+                    }
+
+                } */
+
+
+        public void OrdenarPorAño()
         {
-            Console.Write("Ingresa el primer año del rango: ");
-            int añoMenor = Convert.ToInt32( Console.ReadLine());
-
-            var librosEncontrados = Libros.FindAll(libro => libro.Autor.Equals(autorBuscar));
-
-            if (librosEncontrados.Count == 0)
-            {
-                Console.WriteLine($"No se encontraron libros del autor {autorBuscar} en el momento");
-            }
-            else
-            {
-                Console.WriteLine($"Libros del autor {autorBuscar}:");
-                MostrarLibros(librosEncontrados);
-            }
-            
-        } */
-        
-
-        public void OrdenarPorAño (){
-            Console.WriteLine($"Libros ordenados por su año de publicación: ");            
+            Console.WriteLine($"Libros ordenados por su año de publicación: ");
             var listaOrdenada = Libros.OrderBy(libro => libro.AñoPublicacion).ToList();
             MostrarLibros(listaOrdenada);
         }
