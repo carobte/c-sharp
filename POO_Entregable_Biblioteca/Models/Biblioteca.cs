@@ -109,26 +109,26 @@ namespace POO_Entregable_Biblioteca.Models
             }
         }
 
-
-        /*         public void BuscarPorAño()
+        public void BuscarPorAños()
                 {
                     Console.Write("Ingresa el primer año del rango: ");
                     int añoMenor = Convert.ToInt32( Console.ReadLine());
 
-                    var librosEncontrados = Libros.FindAll(libro => libro.Autor.Equals(autorBuscar));
+                    Console.Write("Ingresa el último año del rango: ");
+                    int añoMayor = Convert.ToInt32( Console.ReadLine());
+
+                    var librosEncontrados = Libros.FindAll(libro => libro.AñoPublicacion < añoMayor && libro.AñoPublicacion > añoMenor );
 
                     if (librosEncontrados.Count == 0)
                     {
-                        Console.WriteLine($"No se encontraron libros del autor {autorBuscar} en el momento");
+                        Console.WriteLine($"No se encontraron libros publicados en ese rango de años {añoMenor} - {añoMayor} en el momento");
                     }
                     else
                     {
-                        Console.WriteLine($"Libros del autor {autorBuscar}:");
+                        Console.WriteLine($"Libros en ese rango de años {añoMenor} - {añoMayor}:");
                         MostrarLibros(librosEncontrados);
                     }
-
-                } */
-
+                } 
 
         public void OrdenarPorAño()
         {

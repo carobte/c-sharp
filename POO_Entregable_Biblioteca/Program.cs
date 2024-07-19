@@ -40,13 +40,15 @@ void Menu()
                 PausarMenu();
                 break;
             case "4":
-            biblioteca.BuscarPorGenero();
+                biblioteca.BuscarPorGenero();
                 PausarMenu();
                 break;
             case "5":
+                biblioteca.BuscarPorAutor();
                 PausarMenu();
                 break;
             case "6":
+                biblioteca.BuscarPorAños();
                 PausarMenu();
                 break;
             case "7":
@@ -77,10 +79,10 @@ void PausarMenu()
 void CrearLibrosEJ()
 {
 
-    var nuevoLibro1 = new Libro("J.K Rowling", "0-7645-2641-1", "fantasia, magia", 65000, 1997, "Harry Potter y la piedra filosofal ");
-    var nuevoLibro2 = new Libro("J.K Rowling", "0-7645-2641-2", "fantasia", 65000, 1998, "Harry Potter y la cámara secreta");
-    var nuevoLibro3 = new Libro("J.K Rowling", "0-7645-2641-3", "fantasia", 65000, 1999, "Harry Potter y el prisionero de Azkaban");
-    var nuevoLibro4 = new Libro("Emily Bronte", "0-7645-2641-4", "novela", 65000, 1847, "Cumbres Borrascosas");
+    var nuevoLibro1 = new Libro("J.K Rowling", "fantasia, magia", 65000, 1997, "Harry Potter y la piedra filosofal ");
+    var nuevoLibro2 = new Libro("J.K Rowling", "fantasia", 65000, 1998, "Harry Potter y la cámara secreta");
+    var nuevoLibro3 = new Libro("J.K Rowling", "fantasia", 65000, 1999, "Harry Potter y el prisionero de Azkaban");
+    var nuevoLibro4 = new Libro("Emily Bronte", "novela", 65000, 1847, "Cumbres Borrascosas");
 
     biblioteca.Libros.Add(nuevoLibro1);
     biblioteca.Libros.Add(nuevoLibro2);
