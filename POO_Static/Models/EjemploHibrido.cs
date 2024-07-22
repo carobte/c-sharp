@@ -11,6 +11,7 @@ public class EjemploHibrido
     public static string? Nombre { get; set; }
     public static string? Apellido { get; set; }
     public byte AlturaCM { get; set; }
+    public static DateTime FechaActual = DateTime.Now;
 
     public EjemploHibrido(int id, string nombre, string apellido, byte alturaCM)
     {
@@ -23,10 +24,10 @@ public class EjemploHibrido
     public void MostrarInfo()
     {
         Console.WriteLine(@$"
-        Id: {Id},
-        Nombre: {Nombre}, 
-        Apellido: {Apellido}, 
-        Altura: {AlturaCM} cm");
+Id: {Id},
+Nombre: {Nombre}, 
+Apellido: {Apellido}, 
+Altura: {AlturaCM} cm");
     }
 
     public static void MostrarHeader()
@@ -34,12 +35,10 @@ public class EjemploHibrido
         Console.WriteLine("==================================");
         Console.WriteLine("             Detalles             ");
         Console.WriteLine("==================================");
-
     }
 
-        public static void MostrarFooter()
+    public static void MostrarFooter()
     {
         Console.WriteLine("_________________________________");
     }
-
 }
