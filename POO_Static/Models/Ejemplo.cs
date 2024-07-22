@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace POO_Static.Models
-{
+namespace POO_Static.Models;
+
     public class Ejemplo
     {
         public string Nombre { get; set; }
@@ -21,7 +21,3 @@ namespace POO_Static.Models
             Console.WriteLine($"Hola! Soy {Nombre} {Apellido}");
         }
     }
-}
-
-
-
