@@ -55,7 +55,7 @@ namespace Taller_Practico_POO.Models
 
         public override void MostrarDetalles() //override -> sobreescritura del método
         {
-            Console.WriteLine($"Rol: Estudiante");
+            Console.WriteLine($"Rol: Profesor");
             base.MostrarDetalles();
             Console.WriteLine($"Asignatura: {Asignatura}");
             ObtenerSalario();

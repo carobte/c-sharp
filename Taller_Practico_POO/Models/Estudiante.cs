@@ -14,7 +14,7 @@ namespace Taller_Practico_POO.Models
 
         public Estudiante(string nombre, string apellido, string tipoDocumento, string numeroDocumento, string email, string telefono, string nombreAcudiente, string cursoActual, DateOnly fechaNacimiento)
         {
-            this.Id = new Guid();
+            this.Id = Guid.NewGuid();
             this.Nombre = nombre;
             this.Apellido = apellido;
             this.TipoDocumento = tipoDocumento;
