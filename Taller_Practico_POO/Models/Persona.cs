@@ -15,7 +15,7 @@ namespace Taller_Practico_POO.Models
         protected string? Email { get; set; }
         protected string? Telefono { get; set; }
 
-        public void MostrarDetalles()
+        public virtual void MostrarDetalles() //virtual -> permite que se sobreescriba el método
         {
             Console.WriteLine($"Id: {Id}");
             Console.WriteLine($"Nombre: {Nombre}");            
