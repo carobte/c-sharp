@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Taller_Practico_POO.Models
 {
-    public class Estudiante: Persona
+    public class Estudiante : Persona
     {
         public string NombreAcudiente { get; set; }
         public string CursoActual { get; set; }
@@ -18,11 +18,11 @@ namespace Taller_Practico_POO.Models
             this.Nombre = nombre;
             this.Apellido = apellido;
             this.TipoDocumento = tipoDocumento;
-            this.NumeroDocumento= numeroDocumento;
+            this.NumeroDocumento = numeroDocumento;
             this.Email = email;
             this.Telefono = telefono;
             this.NombreAcudiente = nombreAcudiente;
-            this.CursoActual= cursoActual;
+            this.CursoActual = cursoActual;
             this.FechaNacimiento = fechaNacimiento;
             this.Calificaciones = new List<double>();
         }
@@ -32,13 +32,34 @@ namespace Taller_Practico_POO.Models
             Calificaciones.Add(calificacion);
         }
 
-        private void CalcularPromedio(){
-            // sumar todas las calificaciones y sacar el promedio (average)
+        private void CalcularPromedio()
+        {
+            Console.WriteLine($"Promedio: {Calificaciones.Average()}");
         }
 
-        public int CalcularEdad(){
-            return 1; // año actual - año de nacimiento
+        public int CalcularEdad()
+        {
+            return DateTime.Now.Year - FechaNacimiento.Year; 
         }
 
+        public void MostrarCalificaciones()
+        {
+            foreach (var calificacion in Calificaciones)
+            {
+                Console.WriteLine($"{calificacion},");
+            }
+        }
+
+        public override void MostrarDetalles() //override -> permite sobreescribir
+        {
+            Console.WriteLine($"Rol: Estudiante");
+            base.MostrarDetalles();
+            Console.WriteLine($"Nombre Acudiente: {NombreAcudiente}");
+            Console.WriteLine($"Curso Actual: {CursoActual}");
+            Console.WriteLine($"Edad: {CalcularEdad()} años");
+            Console.WriteLine("Calificaciones: ");
+            MostrarCalificaciones();
+            CalcularPromedio();
+        }
     }
 }
