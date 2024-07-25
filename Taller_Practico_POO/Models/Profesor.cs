@@ -53,7 +53,7 @@ namespace Taller_Practico_POO.Models
             }
         }
 
-        public override void MostrarDetalles() //override -> permite sobreescribir
+        public override void MostrarDetalles() //override -> sobreescritura del método
         {
             Console.WriteLine($"Rol: Estudiante");
             base.MostrarDetalles();

@@ -34,7 +34,7 @@ namespace Taller_Practico_POO.Models
 
         private void CalcularPromedio()
         {
-            Console.WriteLine($"Promedio: {Calificaciones.Average()}");
+            Console.WriteLine($"Promedio: {Calificaciones.Average():F2}");
         }
 
         public int CalcularEdad()
@@ -50,9 +50,8 @@ namespace Taller_Practico_POO.Models
             }
         }
 
-        public override void MostrarDetalles() //override -> permite sobreescribir
+        public override void MostrarDetalles() //override -> sobreescritura del método
         {
-            Console.WriteLine($"Rol: Estudiante");
             base.MostrarDetalles();
             Console.WriteLine($"Nombre Acudiente: {NombreAcudiente}");
             Console.WriteLine($"Curso Actual: {CursoActual}");
