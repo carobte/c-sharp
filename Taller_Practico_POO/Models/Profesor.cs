@@ -7,20 +7,20 @@ namespace Taller_Practico_POO.Models
 {
     public class Profesor : Persona
     {
-        public string Asignatura {get;set;}
-        private double Salario {get;set;}
-        public DateTime FechaContratacion {get;set;}
-        public List<string> Cursos {get;set;}
+        public string Asignatura { get; set; }
+        private double Salario { get; set; }
+        public DateTime FechaContratacion { get; set; }
+        public List<string> Cursos { get; set; }
 
         public Profesor(
-            string nombre, 
-            string apellido, 
-            string tipoDocumento, 
-            string numeroDocumento, 
-            string email, 
-            string telefono, 
-            string asignatura, 
-            double salario, 
+            string nombre,
+            string apellido,
+            string tipoDocumento,
+            string numeroDocumento,
+            string email,
+            string telefono,
+            string asignatura,
+            double salario,
             DateTime fechaContratacion)
         {
             this.Id = new Guid();
@@ -36,9 +36,33 @@ namespace Taller_Practico_POO.Models
             this.Cursos = new List<string>();
         }
 
-        public int CalcularAntiguedad(){
-            return 1;
+        public int CalcularAntiguedad()
+        {
+            return DateTime.Now.Year - FechaContratacion.Year;
         }
-        
+
+        public void ObtenerSalario(){
+            Console.WriteLine($"Salario: {this.Salario:C} COP");
+        }
+
+        public void MostrarCursos()
+        {
+            foreach (var curso in Cursos)
+            {
+                Console.WriteLine($"{curso},");
+            }
+        }
+
+        public override void MostrarDetalles() //override -> permite sobreescribir
+        {
+            Console.WriteLine($"Rol: Estudiante");
+            base.MostrarDetalles();
+            Console.WriteLine($"Asignatura: {Asignatura}");
+            ObtenerSalario();
+            Console.WriteLine($"Antiguedad: {CalcularAntiguedad()} años");
+            Console.WriteLine($"Cursos: ");
+            MostrarCursos();
+        }
+
     }
 }
