@@ -18,12 +18,22 @@ namespace Taller_Practico_POO.Models
         public virtual void MostrarDetalles() //virtual -> permite que se sobreescriba el método
         {
             Console.WriteLine($"Id: {Id}");
-            Console.WriteLine($"Nombre: {Nombre}");            
+            Console.WriteLine($"Nombre: {Nombre}");
             Console.WriteLine($"Apellido: {Apellido}");
             Console.WriteLine($"Tipo de documento: {TipoDocumento}");
             Console.WriteLine($"Numero de documento: {NumeroDocumento}");
             Console.WriteLine($"Email: {Email}");
             Console.WriteLine($"Telefono: {Telefono}");
+        }
+
+        public string ObtenerNumDocumento()
+        {
+            return NumeroDocumento;
+        }
+
+        public string ObtenerNombre()
+        {
+            return Nombre;
         }
     }
 }
