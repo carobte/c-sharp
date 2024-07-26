@@ -1,6 +1,7 @@
 ﻿using Taller_Practico_POO.Models;
 
-
+AdminApp.AgregarEstudiantesEj();
+AdminApp.AgregarProfesoresEj();
 var bandera = true;
 
 while (bandera)
@@ -12,6 +13,7 @@ while (bandera)
     {
         case "0":
             bandera = false;
+            Console.WriteLine("¡Hasta luego!");
             break;
         case "1":
             var estudianteNuevo = AdminApp.PedirDatosEstudiante();
@@ -20,7 +22,9 @@ while (bandera)
             AdminApp.PausarMenu();
             break;
         case "2":
-            // Agregar Profesor
+            var profesorNuevo = AdminApp.PedirDatosProfesor();
+            AdminApp.PedirCursos(profesorNuevo);
+            AdminApp.AgregarProfesor(profesorNuevo);
             AdminApp.PausarMenu();
             break;
         case "3":
@@ -28,7 +32,7 @@ while (bandera)
             AdminApp.PausarMenu();
             break;
         case "4":
-            // Mostrar Profesores
+            AdminApp.MostrarProfesores();
             AdminApp.PausarMenu();
             break;
         case "5":
@@ -38,11 +42,17 @@ while (bandera)
             // Editar profesor
             break;
         case "7":
-            // Eliminar estudiante
+            var estudianteEliminar = AdminApp.BuscarEstudiante();
+            AdminApp.EliminarEstudiante(estudianteEliminar);
+            AdminApp.PausarMenu();
             break;
         case "8":
-        // Eliminar profesor
+            var profesorEliminar = AdminApp.BuscarProfesor();
+            AdminApp.EliminarProfesor(profesorEliminar);
+            AdminApp.PausarMenu();
+            break;
         default:
+            Console.WriteLine("Opción incorrecta, intenta de nuevo.");
             break;
     }
 }
