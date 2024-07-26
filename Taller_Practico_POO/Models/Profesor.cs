@@ -23,7 +23,7 @@ namespace Taller_Practico_POO.Models
             double salario,
             DateTime fechaContratacion)
         {
-            this.Id = new Guid();
+            this.Id = Guid.NewGuid();
             this.Nombre = nombre;
             this.Apellido = apellido;
             this.TipoDocumento = tipoDocumento;
@@ -38,7 +38,7 @@ namespace Taller_Practico_POO.Models
 
         public int CalcularAntiguedad()
         {
-            return DateTime.Now.Month - FechaContratacion.Month;
+            return (DateTime.Now.Year - FechaContratacion.Year) * 12 + (DateTime.Now.Month - FechaContratacion.Month);
         }
 
         public void ObtenerSalario()
@@ -68,6 +68,15 @@ namespace Taller_Practico_POO.Models
             Console.WriteLine($"Antiguedad: {CalcularAntiguedad()} meses");
             Console.WriteLine($"Cursos: ");
             MostrarCursos();
+        }
+
+        public static void EditarProfesor(List<Profesor> lista, Profesor profesor)
+        {
+            if (profesor != null)
+            {
+                Console.WriteLine("Nuevo Email: ");
+                profesor.Email = Console.ReadLine();
+            }
         }
 
     }

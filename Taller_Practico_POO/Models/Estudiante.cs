@@ -39,7 +39,7 @@ namespace Taller_Practico_POO.Models
 
         public int CalcularEdad()
         {
-            return DateTime.Now.Year - FechaNacimiento.Year; 
+            return DateTime.Now.Year - FechaNacimiento.Year;
         }
 
         public void MostrarCalificaciones()
@@ -59,6 +59,15 @@ namespace Taller_Practico_POO.Models
             Console.WriteLine("Calificaciones: ");
             MostrarCalificaciones();
             CalcularPromedio();
+        }
+
+        public static void EditarEstudiante(List<Estudiante> lista, Estudiante estudiante)
+        {
+            if (estudiante != null)
+            {
+                Console.WriteLine("Nuevo Email: ");
+                estudiante.Email = Console.ReadLine();
+            }
         }
     }
 }

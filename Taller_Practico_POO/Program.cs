@@ -1,9 +1,13 @@
 ﻿using Taller_Practico_POO.Models;
 
+// Datos quemados de ejemplo para estudiantes y profesores 
 AdminApp.AgregarEstudiantesEj();
 AdminApp.AgregarProfesoresEj();
+
+// Bandera para el menu
 var bandera = true;
 
+// Bucle del menú con sus opciones
 while (bandera)
 {
     AdminApp.ImprimirMenu();
@@ -36,10 +40,12 @@ while (bandera)
             AdminApp.PausarMenu();
             break;
         case "5":
-            // Editar estudiante
+            AdminApp.EditarEstudiante();
+            AdminApp.PausarMenu();
             break;
         case "6":
-            // Editar profesor
+            AdminApp.EditarProfesor();
+            AdminApp.PausarMenu();
             break;
         case "7":
             var estudianteEliminar = AdminApp.BuscarEstudiante();

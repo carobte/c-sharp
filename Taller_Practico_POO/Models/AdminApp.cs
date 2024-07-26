@@ -7,10 +7,25 @@ namespace Taller_Practico_POO.Models
 {
     public static class AdminApp
     {
-        public static List<Estudiante> Estudiantes = new List<Estudiante>();
-        public static List<Profesor> Profesores = new List<Profesor>();
+        public static List<Estudiante> Estudiantes = new List<Estudiante>(); // Lista para guardar los estudiantes
+        public static List<Profesor> Profesores = new List<Profesor>(); // Lista para guardar los profesores
 
-        public static Estudiante PedirDatosEstudiante()
+        public static void EditarEstudiante()
+        {
+            var estudianteEncontrado = BuscarEstudiante();
+            Estudiante.EditarEstudiante(Estudiantes, estudianteEncontrado);
+            Console.WriteLine($"El estudiante {estudianteEncontrado.ObtenerNombre()} fue editado satisfactoriamente");
+
+        }
+
+        public static void EditarProfesor()
+        {
+            var profesorEncontrado = BuscarProfesor();
+            Profesor.EditarProfesor(Profesores, profesorEncontrado);
+            Console.WriteLine($"El profesor {profesorEncontrado.ObtenerNombre()} fue editado satisfactoriamente");
+        }
+
+        public static Estudiante PedirDatosEstudiante() // Solicitamos los datos de un estudiante
         {
             Console.WriteLine("Ingrese los datos del estudiante:");
 
@@ -39,12 +54,14 @@ namespace Taller_Practico_POO.Models
             string? curso = Console.ReadLine();
 
             Console.WriteLine("Ingresa la fecha de nacimiento del estudiante: año/mes/día ");
+            // Convertimos primero a DateTime para poder convertir a DateOnly
             DateOnly fechaNacimiento = DateOnly.FromDateTime(Convert.ToDateTime(Console.ReadLine()));
 
+            // se retorna una instancia de estudiante con los datos ingresados
             return new Estudiante(nombre, apellido, tipoDocumento, numeroDocumento, email, telefono, nombreAcudiente, curso, fechaNacimiento);
         }
 
-        public static Profesor PedirDatosProfesor()
+        public static Profesor PedirDatosProfesor() // solicitamos datos del profesor
         {
             Console.WriteLine("Ingrese los datos del profesor:");
 
@@ -73,18 +90,19 @@ namespace Taller_Practico_POO.Models
             double salario = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine("Ingresa la fecha de contratación del profesor: año/mes/día ");
-            DateTime fechaContratacion = Convert.ToDateTime(Console.ReadLine());
+            DateTime fechaContratacion = Convert.ToDateTime(Console.ReadLine()); // convertimos a DateTime
 
+            // se retorna una instancia de profesor con los datos ingresados
             return new Profesor(nombre, apellido, tipoDocumento, numeroDocumento, email, telefono, asignatura, salario, fechaContratacion);
         }
 
-        public static void AgregarEstudiantesEj()
+        public static void AgregarEstudiantesEj() // Datos quemados de ejemplo.
         {
-            var estudiante1 = new Estudiante("Juan", "Pérez", "CC", "12345678", "juan.perez@example.com", "555-1234", "María Pérez", "10A", new DateOnly(2006, 5, 12));
-            var estudiante2 = new Estudiante("María", "Gómez", "TI", "87654321", "maria.gomez@example.com", "555-5678", "Luis Gómez", "9B", new DateOnly(2007, 8, 24));
-            var estudiante3 = new Estudiante("Carlos", "Rodríguez", "CC", "11223344", "carlos.rodriguez@example.com", "555-9876", "Ana Rodríguez", "11C", new DateOnly(2005, 3, 19));
-            var estudiante4 = new Estudiante("Lucía", "Martínez", "TI", "44332211", "lucia.martinez@example.com", "555-6543", "Pedro Martínez", "8A", new DateOnly(2008, 11, 5));
-            var estudiante5 = new Estudiante("Pedro", "López", "CC", "99887766", "pedro.lopez@example.com", "555-3210", "Sofía López", "10B", new DateOnly(2006, 1, 30));
+            var estudiante1 = new Estudiante("Juan", "Pérez", "CC", "12345678", "juan.perez@example.com", "555-1234", "María Pérez", "décimo", new DateOnly(2006, 5, 12));
+            var estudiante2 = new Estudiante("María", "Gómez", "TI", "87654321", "maria.gomez@example.com", "555-5678", "Luis Gómez", "noveno", new DateOnly(2007, 8, 24));
+            var estudiante3 = new Estudiante("Carlos", "Rodríguez", "CC", "11223344", "carlos.rodriguez@example.com", "555-9876", "Ana Rodríguez", "once", new DateOnly(2005, 3, 19));
+            var estudiante4 = new Estudiante("Lucía", "Martínez", "TI", "44332211", "lucia.martinez@example.com", "555-6543", "Pedro Martínez", "octavo", new DateOnly(2008, 11, 5));
+            var estudiante5 = new Estudiante("Pedro", "López", "CC", "99887766", "pedro.lopez@example.com", "555-3210", "Sofía López", "décimo", new DateOnly(2006, 1, 30));
 
             Estudiantes.Add(estudiante1);
             Estudiantes.Add(estudiante2);
@@ -92,14 +110,24 @@ namespace Taller_Practico_POO.Models
             Estudiantes.Add(estudiante4);
             Estudiantes.Add(estudiante5);
 
-            estudiante1.AgregarCalificaciones(4.5);
-            estudiante2.AgregarCalificaciones(2.5);
-            estudiante3.AgregarCalificaciones(4.5);
-            estudiante4.AgregarCalificaciones(5.0);
-            estudiante5.AgregarCalificaciones(3.5);
+            estudiante1.AgregarCalificaciones(75);
+            estudiante1.AgregarCalificaciones(85);
+            
+            estudiante2.AgregarCalificaciones(85);
+            estudiante2.AgregarCalificaciones(55);
+
+            estudiante3.AgregarCalificaciones(65);
+            estudiante3.AgregarCalificaciones(100);
+
+            estudiante4.AgregarCalificaciones(90);
+            estudiante4.AgregarCalificaciones(50);
+
+            estudiante5.AgregarCalificaciones(95);
+            estudiante5.AgregarCalificaciones(50);
+
         }
 
-        public static void AgregarProfesoresEj()
+        public static void AgregarProfesoresEj() // Datos quemados de ejemplo
         {
             var profesor1 = new Profesor("Laura", "González", "CC", "123456789", "laura.gonzalez@example.com", "555-1111", "Matemáticas", 8000000, new DateTime(2015, 9, 1));
             var profesor2 = new Profesor("Jorge", "Martínez", "TI", "987654321", "jorge.martinez@example.com", "555-2222", "Historia", 8200000, new DateTime(2016, 3, 15));
@@ -108,7 +136,7 @@ namespace Taller_Practico_POO.Models
             Profesores.Add(profesor1);
             Profesores.Add(profesor2);
             Profesores.Add(profesor3);
-            
+
             profesor1.AgregarCursos("sexto");
             profesor1.AgregarCursos("séptimo");
             profesor2.AgregarCursos("octavo");
@@ -146,7 +174,7 @@ namespace Taller_Practico_POO.Models
                 profesor.AgregarCursos(curso);
             }
         }
-        
+
         public static void AgregarProfesor(Profesor profesor)
         {
             Profesores.Add(profesor);
