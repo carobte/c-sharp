@@ -29,32 +29,32 @@ namespace Taller_Practico_POO.Models
             Console.WriteLine("Ingrese los datos del estudiante:");
 
             Console.WriteLine("Nombre: ");
-            string? nombre = Console.ReadLine();
+            string? nombre = Console.ReadLine().Trim();
 
             Console.WriteLine("Apellido: ");
-            string? apellido = Console.ReadLine();
+            string? apellido = Console.ReadLine().Trim();
 
             Console.WriteLine("Tipo de documento: ");
-            string? tipoDocumento = Console.ReadLine();
+            string? tipoDocumento = Console.ReadLine().Trim();
 
             Console.WriteLine("Número de documento: ");
-            string? numeroDocumento = Console.ReadLine();
+            string? numeroDocumento = Console.ReadLine().Trim();
 
             Console.WriteLine("Email: ");
-            string? email = Console.ReadLine();
+            string? email = Console.ReadLine().Trim();
 
             Console.WriteLine("Teléfono: ");
-            string? telefono = Console.ReadLine();
+            string? telefono = Console.ReadLine().Trim();
 
             Console.WriteLine("Nombre Acudiente: ");
-            string? nombreAcudiente = Console.ReadLine();
+            string? nombreAcudiente = Console.ReadLine().Trim();
 
             Console.WriteLine("Curso: ");
-            string? curso = Console.ReadLine();
+            string? curso = Console.ReadLine().Trim();
 
             Console.WriteLine("Ingresa la fecha de nacimiento del estudiante: año/mes/día ");
             // Convertimos primero a DateTime para poder convertir a DateOnly
-            DateOnly fechaNacimiento = DateOnly.FromDateTime(Convert.ToDateTime(Console.ReadLine()));
+            DateOnly fechaNacimiento = DateOnly.FromDateTime(Convert.ToDateTime(Console.ReadLine().Trim()));
 
             // se retorna una instancia de estudiante con los datos ingresados
             return new Estudiante(nombre, apellido, tipoDocumento, numeroDocumento, email, telefono, nombreAcudiente, curso, fechaNacimiento);
@@ -65,31 +65,31 @@ namespace Taller_Practico_POO.Models
             Console.WriteLine("Ingrese los datos del profesor:");
 
             Console.WriteLine("Nombre: ");
-            string? nombre = Console.ReadLine();
+            string? nombre = Console.ReadLine().Trim();
 
             Console.WriteLine("Apellido: ");
-            string? apellido = Console.ReadLine();
+            string? apellido = Console.ReadLine().Trim();
 
             Console.WriteLine("Tipo de documento: ");
-            string? tipoDocumento = Console.ReadLine();
+            string? tipoDocumento = Console.ReadLine().Trim();
 
             Console.WriteLine("Número de documento: ");
-            string? numeroDocumento = Console.ReadLine();
+            string? numeroDocumento = Console.ReadLine().Trim();
 
             Console.WriteLine("Email: ");
-            string? email = Console.ReadLine();
+            string? email = Console.ReadLine().Trim();
 
             Console.WriteLine("Teléfono: ");
-            string? telefono = Console.ReadLine();
+            string? telefono = Console.ReadLine().Trim();
 
             Console.WriteLine("Asignatura: ");
-            string? asignatura = Console.ReadLine();
+            string? asignatura = Console.ReadLine().Trim();
 
             Console.WriteLine("Salario: ");
-            double salario = Convert.ToDouble(Console.ReadLine());
+            double salario = Convert.ToDouble(Console.ReadLine().Trim());
 
             Console.WriteLine("Ingresa la fecha de contratación del profesor: año/mes/día ");
-            DateTime fechaContratacion = Convert.ToDateTime(Console.ReadLine()); // convertimos a DateTime
+            DateTime fechaContratacion = Convert.ToDateTime(Console.ReadLine().Trim()); // convertimos a DateTime
 
             // se retorna una instancia de profesor con los datos ingresados
             return new Profesor(nombre, apellido, tipoDocumento, numeroDocumento, email, telefono, asignatura, salario, fechaContratacion);
@@ -97,7 +97,7 @@ namespace Taller_Practico_POO.Models
 
         public static void AgregarEstudiantesEj() // Datos quemados de ejemplo.
         {
-            var estudiante1 = new Estudiante("Juan", "Pérez", "CC", "12345678", "juan.perez@example.com", "555-1234", "María Pérez", "décimo", new DateOnly(2006, 5, 12));
+            var estudiante1 = new Estudiante("Juan", "Pérez", "CC", "12345678", "juan.perez@example.com", "555-1234", "María Pérez", "décimo", new DateOnly(2000, 5, 12));
             var estudiante2 = new Estudiante("María", "Gómez", "TI", "87654321", "maria.gomez@example.com", "555-5678", "Luis Gómez", "noveno", new DateOnly(2007, 8, 24));
             var estudiante3 = new Estudiante("Carlos", "Rodríguez", "CC", "11223344", "carlos.rodriguez@example.com", "555-9876", "Ana Rodríguez", "once", new DateOnly(2005, 3, 19));
             var estudiante4 = new Estudiante("Lucía", "Martínez", "TI", "44332211", "lucia.martinez@example.com", "555-6543", "Pedro Martínez", "octavo", new DateOnly(2008, 11, 5));
@@ -119,7 +119,7 @@ namespace Taller_Practico_POO.Models
             estudiante3.AgregarCalificaciones(100);
 
             estudiante4.AgregarCalificaciones(90);
-            estudiante4.AgregarCalificaciones(50);
+            estudiante4.AgregarCalificaciones(90);
 
             estudiante5.AgregarCalificaciones(95);
             estudiante5.AgregarCalificaciones(50);
@@ -147,15 +147,15 @@ namespace Taller_Practico_POO.Models
         public static void PedirCalificaciones(Estudiante estudiante) // Pedimos calificaciones de cada estudiante y se le agregan
         {
             Console.WriteLine("Cuántas notas vas a agregar?: ");
-            var notas = Convert.ToInt32(Console.ReadLine());
+            var notas = Convert.ToInt32(Console.ReadLine().Trim());
             for (int i = 1; i <= notas; i++)
             {
                 Console.WriteLine($"Escribe tu {i} nota: ");
-                var nota = Convert.ToDouble(Console.ReadLine());
+                var nota = Convert.ToDouble(Console.ReadLine().Trim());
                 estudiante.AgregarCalificaciones(nota);
             }
         }
-        
+
         public static void AgregarEstudiante(Estudiante estudiante) // Se agrega el estudiante a la lista
         {
             Estudiantes.Add(estudiante);
@@ -165,11 +165,11 @@ namespace Taller_Practico_POO.Models
         public static void PedirCursos(Profesor profesor) // se piden los cursos a los que va a estar asignado el profesor
         {
             Console.WriteLine($"Cuántas cursos vas a agregarle al {profesor.ObtenerNombre()}?: ");
-            var cursos = Convert.ToInt32(Console.ReadLine());
+            var cursos = Convert.ToInt32(Console.ReadLine().Trim());
             for (int i = 1; i <= cursos; i++)
             {
                 Console.WriteLine($"Escribe el {i} curso donde esté asignado: ");
-                var curso = Console.ReadLine();
+                var curso = Console.ReadLine().Trim();
                 profesor.AgregarCursos(curso); // se agregan los cursos
             }
         }
@@ -180,17 +180,17 @@ namespace Taller_Practico_POO.Models
             Console.WriteLine($"El profesor fue añadido correctamente");
         }
 
-        public static void MostrarEstudiantes() // se imprime la información de los estudiantes
+        public static void MostrarEstudiantes(List<Estudiante> listaEstudiantes) // se imprime la información de los estudiantes
         {
-            foreach (var estudiante in Estudiantes)
+            foreach (var estudiante in listaEstudiantes)
             {
                 estudiante.MostrarDetalles();
             }
         }
 
-        public static void MostrarProfesores() // se imprime la información de los profesores
+        public static void MostrarProfesores(List<Profesor> listaProfesores) // se imprime la información de los profesores
         {
-            foreach (var profesor in Profesores)
+            foreach (var profesor in listaProfesores)
             {
                 profesor.MostrarDetalles();
             }
@@ -199,21 +199,21 @@ namespace Taller_Practico_POO.Models
         public static Estudiante BuscarEstudiante() // buscamos un estudiante específico para editar o eliminar
         {
             Console.WriteLine("Ingresa el número de documento del estudiante: ");
-            var numDocumento = Console.ReadLine();
+            var numDocumento = Console.ReadLine().Trim();
             return Estudiantes.Find(estudiante => estudiante.ObtenerNumDocumento() == numDocumento);
         }
 
         public static Profesor BuscarProfesor() // buscamos un profesor específico para editar o eliminar
         {
             Console.WriteLine("Ingresa el número de documento del profesor: ");
-            var numDocumento = Console.ReadLine();
+            var numDocumento = Console.ReadLine().Trim();
             return Profesores.Find(profesor => profesor.ObtenerNumDocumento() == numDocumento);
         }
 
         public static void EliminarEstudiante(Estudiante estudiante) // se elimina un estudiante de la lista 
         {
             Console.WriteLine($"¿Está seguro que desea eliminar a {estudiante.ObtenerNombre()}? (si/no)");
-            var confirmacion = Console.ReadLine();
+            var confirmacion = Console.ReadLine().Trim();
             if (confirmacion.Equals("si", StringComparison.CurrentCultureIgnoreCase)) // Valida el si sin importar mayus o minus.
             {
                 Estudiantes.Remove(estudiante);
@@ -224,7 +224,7 @@ namespace Taller_Practico_POO.Models
         public static void EliminarProfesor(Profesor profesor) // se elimina un profesor de la lista 
         {
             Console.WriteLine($"¿Está seguro que desea eliminar a {profesor.ObtenerNombre()}? (si/no)");
-            var confirmacion = Console.ReadLine();
+            var confirmacion = Console.ReadLine().Trim();
             if (confirmacion.Equals("si", StringComparison.CurrentCultureIgnoreCase)) // Valida el si sin importar mayus o minus.
             {
                 Profesores.Remove(profesor);
@@ -232,21 +232,22 @@ namespace Taller_Practico_POO.Models
             }
         }
 
-        public static void ImprimirMenu() // impresión del menú
+        public static void ImprimirMenu() // Impresión del menú
         {
-            Console.WriteLine("==============================================================================");
-            Console.WriteLine("                           Gestión del sistema escolar                        ");
-            Console.WriteLine("==============================================================================");
-            Console.WriteLine("                             1. Agregar Estudiante                            ");
-            Console.WriteLine("                             2. Agregar Profesor                              ");
-            Console.WriteLine("                             3. Mostrar Estudiantes                           ");
-            Console.WriteLine("                             4. Mostrar Profesores                            ");
-            Console.WriteLine("                             5. Editar Estudiante                             ");
-            Console.WriteLine("                             6. Editar Profesor                               ");
-            Console.WriteLine("                             7. Eliminar Estudiante                           ");
-            Console.WriteLine("                             8. Eliminar Profesor                             ");
-            Console.WriteLine("                             0. Salir                                         ");
-            Console.WriteLine("==============================================================================");
+            Console.WriteLine("=========================================================================================");
+            Console.WriteLine("                           Gestión del sistema escolar                                   ");
+            Console.WriteLine("=========================================================================================");
+            Console.WriteLine("                             1. Agregar Estudiante                                       ");
+            Console.WriteLine("                             2. Agregar Profesor                                         ");
+            Console.WriteLine("                             3. Mostrar Estudiantes                                      ");
+            Console.WriteLine("                             4. Mostrar Profesores                                       ");
+            Console.WriteLine("                             5. Editar Estudiante                                        ");
+            Console.WriteLine("                             6. Editar Profesor                                          ");
+            Console.WriteLine("                             7. Eliminar Estudiante                                      ");
+            Console.WriteLine("                             8. Eliminar Profesor                                        ");
+            Console.WriteLine("                             9. Busquedas LINQ                                           ");
+            Console.WriteLine("                             0. Salir                                                    ");
+            Console.WriteLine("=========================================================================================");;
             Console.WriteLine("Selecciona una opción: ");
 
         }
@@ -256,5 +257,7 @@ namespace Taller_Practico_POO.Models
             Console.WriteLine("Presiona una tecla para continuar");
             Console.ReadKey();
         }
+
+
     }
 }

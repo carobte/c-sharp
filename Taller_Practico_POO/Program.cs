@@ -32,11 +32,11 @@ while (bandera)
             AdminApp.PausarMenu();
             break;
         case "3":
-            AdminApp.MostrarEstudiantes();
+            AdminApp.MostrarEstudiantes(AdminApp.Estudiantes);
             AdminApp.PausarMenu();
             break;
         case "4":
-            AdminApp.MostrarProfesores();
+            AdminApp.MostrarProfesores(AdminApp.Profesores);
             AdminApp.PausarMenu();
             break;
         case "5":
@@ -56,6 +56,9 @@ while (bandera)
             var profesorEliminar = AdminApp.BuscarProfesor();
             AdminApp.EliminarProfesor(profesorEliminar);
             AdminApp.PausarMenu();
+            break;
+        case "9":
+            LINQ.MenuLINQ(AdminApp.Estudiantes, AdminApp.Profesores);
             break;
         default:
             Console.WriteLine("Opción incorrecta, intenta de nuevo.");

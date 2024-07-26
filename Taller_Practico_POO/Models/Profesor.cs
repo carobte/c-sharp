@@ -42,9 +42,9 @@ namespace Taller_Practico_POO.Models
             return (DateTime.Now.Year - FechaContratacion.Year) * 12 + (DateTime.Now.Month - FechaContratacion.Month);
         }
 
-        public void ObtenerSalario() // Imprime el salario actual del profesor
+        public double ObtenerSalario() // Imprime el salario actual del profesor
         {
-            Console.WriteLine($"Salario: {this.Salario:C} COP");
+            return this.Salario;
         }
 
         public void MostrarCursos() // Imprime los cursos que tiene asignados el profesor
@@ -65,7 +65,7 @@ namespace Taller_Practico_POO.Models
             Console.WriteLine($"Rol: Profesor");
             base.MostrarDetalles();
             Console.WriteLine($"Asignatura: {Asignatura}");
-            ObtenerSalario();
+            Console.WriteLine($"Salario: {this.Salario:C} COP");
             Console.WriteLine($"Antiguedad: {CalcularAntiguedad()} meses");
             Console.WriteLine($"Cursos: ");
             MostrarCursos();

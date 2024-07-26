@@ -36,5 +36,9 @@ namespace Taller_Practico_POO.Models
         {
             return Nombre;
         }
+        public string ObtenerApellido()
+        {
+            return Apellido;
+        }
     }
 }
