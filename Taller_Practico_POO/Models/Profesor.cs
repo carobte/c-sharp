@@ -38,10 +38,11 @@ namespace Taller_Practico_POO.Models
 
         public int CalcularAntiguedad()
         {
-            return DateTime.Now.Year - FechaContratacion.Year;
+            return DateTime.Now.Month - FechaContratacion.Month;
         }
 
-        public void ObtenerSalario(){
+        public void ObtenerSalario()
+        {
             Console.WriteLine($"Salario: {this.Salario:C} COP");
         }
 
@@ -53,13 +54,18 @@ namespace Taller_Practico_POO.Models
             }
         }
 
+        public void AgregarCursos(string curso)
+        {
+            Cursos.Add(curso);
+        }
+
         public override void MostrarDetalles() //override -> sobreescritura del método
         {
             Console.WriteLine($"Rol: Profesor");
             base.MostrarDetalles();
             Console.WriteLine($"Asignatura: {Asignatura}");
             ObtenerSalario();
-            Console.WriteLine($"Antiguedad: {CalcularAntiguedad()} años");
+            Console.WriteLine($"Antiguedad: {CalcularAntiguedad()} meses");
             Console.WriteLine($"Cursos: ");
             MostrarCursos();
         }
