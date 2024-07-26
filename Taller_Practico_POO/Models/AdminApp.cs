@@ -13,15 +13,14 @@ namespace Taller_Practico_POO.Models
         public static void EditarEstudiante()
         {
             var estudianteEncontrado = BuscarEstudiante();
-            Estudiante.EditarEstudiante(Estudiantes, estudianteEncontrado);
+            Estudiante.EditarEstudiante(estudianteEncontrado);
             Console.WriteLine($"El estudiante {estudianteEncontrado.ObtenerNombre()} fue editado satisfactoriamente");
-
         }
 
         public static void EditarProfesor()
         {
             var profesorEncontrado = BuscarProfesor();
-            Profesor.EditarProfesor(Profesores, profesorEncontrado);
+            Profesor.EditarProfesor(profesorEncontrado);
             Console.WriteLine($"El profesor {profesorEncontrado.ObtenerNombre()} fue editado satisfactoriamente");
         }
 
@@ -112,7 +111,7 @@ namespace Taller_Practico_POO.Models
 
             estudiante1.AgregarCalificaciones(75);
             estudiante1.AgregarCalificaciones(85);
-            
+
             estudiante2.AgregarCalificaciones(85);
             estudiante2.AgregarCalificaciones(55);
 
@@ -145,7 +144,7 @@ namespace Taller_Practico_POO.Models
             profesor3.AgregarCursos("noveno");
         }
 
-        public static void PedirCalificaciones(Estudiante estudiante)
+        public static void PedirCalificaciones(Estudiante estudiante) // Pedimos calificaciones de cada estudiante y se le agregan
         {
             Console.WriteLine("Cuántas notas vas a agregar?: ");
             var notas = Convert.ToInt32(Console.ReadLine());
@@ -156,14 +155,14 @@ namespace Taller_Practico_POO.Models
                 estudiante.AgregarCalificaciones(nota);
             }
         }
-
-        public static void AgregarEstudiante(Estudiante estudiante)
+        
+        public static void AgregarEstudiante(Estudiante estudiante) // Se agrega el estudiante a la lista
         {
             Estudiantes.Add(estudiante);
             Console.WriteLine($"El estudiante fue añadido correctamente");
         }
 
-        public static void PedirCursos(Profesor profesor)
+        public static void PedirCursos(Profesor profesor) // se piden los cursos a los que va a estar asignado el profesor
         {
             Console.WriteLine($"Cuántas cursos vas a agregarle al {profesor.ObtenerNombre()}?: ");
             var cursos = Convert.ToInt32(Console.ReadLine());
@@ -171,17 +170,17 @@ namespace Taller_Practico_POO.Models
             {
                 Console.WriteLine($"Escribe el {i} curso donde esté asignado: ");
                 var curso = Console.ReadLine();
-                profesor.AgregarCursos(curso);
+                profesor.AgregarCursos(curso); // se agregan los cursos
             }
         }
 
-        public static void AgregarProfesor(Profesor profesor)
+        public static void AgregarProfesor(Profesor profesor) // se agrega el profesor a la lista
         {
             Profesores.Add(profesor);
             Console.WriteLine($"El profesor fue añadido correctamente");
         }
 
-        public static void MostrarEstudiantes()
+        public static void MostrarEstudiantes() // se imprime la información de los estudiantes
         {
             foreach (var estudiante in Estudiantes)
             {
@@ -189,7 +188,7 @@ namespace Taller_Practico_POO.Models
             }
         }
 
-        public static void MostrarProfesores()
+        public static void MostrarProfesores() // se imprime la información de los profesores
         {
             foreach (var profesor in Profesores)
             {
@@ -197,21 +196,21 @@ namespace Taller_Practico_POO.Models
             }
         }
 
-        public static Estudiante BuscarEstudiante()
+        public static Estudiante BuscarEstudiante() // buscamos un estudiante específico para editar o eliminar
         {
             Console.WriteLine("Ingresa el número de documento del estudiante: ");
             var numDocumento = Console.ReadLine();
             return Estudiantes.Find(estudiante => estudiante.ObtenerNumDocumento() == numDocumento);
         }
 
-        public static Profesor BuscarProfesor()
+        public static Profesor BuscarProfesor() // buscamos un profesor específico para editar o eliminar
         {
             Console.WriteLine("Ingresa el número de documento del profesor: ");
             var numDocumento = Console.ReadLine();
             return Profesores.Find(profesor => profesor.ObtenerNumDocumento() == numDocumento);
         }
 
-        public static void EliminarEstudiante(Estudiante estudiante)
+        public static void EliminarEstudiante(Estudiante estudiante) // se elimina un estudiante de la lista 
         {
             Console.WriteLine($"¿Está seguro que desea eliminar a {estudiante.ObtenerNombre()}? (si/no)");
             var confirmacion = Console.ReadLine();
@@ -222,7 +221,7 @@ namespace Taller_Practico_POO.Models
             }
         }
 
-        public static void EliminarProfesor(Profesor profesor)
+        public static void EliminarProfesor(Profesor profesor) // se elimina un profesor de la lista 
         {
             Console.WriteLine($"¿Está seguro que desea eliminar a {profesor.ObtenerNombre()}? (si/no)");
             var confirmacion = Console.ReadLine();
@@ -233,7 +232,7 @@ namespace Taller_Practico_POO.Models
             }
         }
 
-        public static void ImprimirMenu()
+        public static void ImprimirMenu() // impresión del menú
         {
             Console.WriteLine("==============================================================================");
             Console.WriteLine("                           Gestión del sistema escolar                        ");
@@ -252,7 +251,7 @@ namespace Taller_Practico_POO.Models
 
         }
 
-        public static void PausarMenu()
+        public static void PausarMenu() // generamos una pausa en el menú para mejorar la experiencia de usuario
         {
             Console.WriteLine("Presiona una tecla para continuar");
             Console.ReadKey();

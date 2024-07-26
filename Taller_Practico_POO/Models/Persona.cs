@@ -26,6 +26,7 @@ namespace Taller_Practico_POO.Models
             Console.WriteLine($"Telefono: {Telefono}");
         }
 
+        // Métodos para obtener los datos que están protected
         public string ObtenerNumDocumento()
         {
             return NumeroDocumento;

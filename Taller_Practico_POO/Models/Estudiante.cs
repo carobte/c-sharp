@@ -14,7 +14,7 @@ namespace Taller_Practico_POO.Models
 
         public Estudiante(string nombre, string apellido, string tipoDocumento, string numeroDocumento, string email, string telefono, string nombreAcudiente, string cursoActual, DateOnly fechaNacimiento)
         {
-            this.Id = Guid.NewGuid();
+            this.Id = Guid.NewGuid(); // se genera un id para cada estudiante
             this.Nombre = nombre;
             this.Apellido = apellido;
             this.TipoDocumento = tipoDocumento;
@@ -24,25 +24,25 @@ namespace Taller_Practico_POO.Models
             this.NombreAcudiente = nombreAcudiente;
             this.CursoActual = cursoActual;
             this.FechaNacimiento = fechaNacimiento;
-            this.Calificaciones = new List<double>();
+            this.Calificaciones = new List<double>(); // se genera una lista de calificaciones para cada estudiante
         }
 
-        public void AgregarCalificaciones(double calificacion)
+        public void AgregarCalificaciones(double calificacion) // agregamos la calificacion a la lista
         {
             Calificaciones.Add(calificacion);
         }
 
-        private void CalcularPromedio()
+        private void CalcularPromedio() // se calcula el promedio de las calificaciones del estudiante
         {
             Console.WriteLine($"Promedio: {Calificaciones.Average():F2}");
         }
 
-        public int CalcularEdad()
+        public int CalcularEdad() // calculamos la edad
         {
             return DateTime.Now.Year - FechaNacimiento.Year;
         }
 
-        public void MostrarCalificaciones()
+        public void MostrarCalificaciones() // mostramos cada nota
         {
             foreach (var calificacion in Calificaciones)
             {
@@ -61,12 +61,24 @@ namespace Taller_Practico_POO.Models
             CalcularPromedio();
         }
 
-        public static void EditarEstudiante(List<Estudiante> lista, Estudiante estudiante)
+        public static void EditarEstudiante(Estudiante estudiante) 
+        // al tener atributos protected, generamos un método para permitir su edición
         {
             if (estudiante != null)
             {
                 Console.WriteLine("Nuevo Email: ");
                 estudiante.Email = Console.ReadLine();
+
+                Console.WriteLine("Nuevo Teléfono: ");
+                estudiante.Telefono = Console.ReadLine();
+
+                Console.WriteLine("Nuevo acudiente: ");
+                estudiante.NombreAcudiente = Console.ReadLine();
+
+                Console.WriteLine("Nuevo curso: ");
+                estudiante.CursoActual = Console.ReadLine();
+
+                Console.WriteLine($"El estudiante {estudiante.ObtenerNombre()} fue editado");
             }
         }
     }
