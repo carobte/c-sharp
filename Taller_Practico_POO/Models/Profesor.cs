@@ -62,6 +62,7 @@ namespace Taller_Practico_POO.Models
 
         public override void MostrarDetalles() //override -> sobreescritura del método
         {
+            Console.WriteLine("__________________________________________________________");
             Console.WriteLine($"Rol: Profesor");
             base.MostrarDetalles();
             Console.WriteLine($"Asignatura: {Asignatura}");
@@ -69,6 +70,8 @@ namespace Taller_Practico_POO.Models
             Console.WriteLine($"Antiguedad: {CalcularAntiguedad()} meses");
             Console.WriteLine($"Cursos: ");
             MostrarCursos();
+            Console.WriteLine("__________________________________________________________");
+
         }
 
         public static void EditarProfesor(Profesor profesor) // Método para editar el profesor 

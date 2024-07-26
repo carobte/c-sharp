@@ -52,6 +52,7 @@ namespace Taller_Practico_POO.Models
 
         public override void MostrarDetalles() //override -> sobreescritura del método
         {
+            Console.WriteLine("__________________________________________________________");
             base.MostrarDetalles();
             Console.WriteLine($"Nombre Acudiente: {NombreAcudiente}");
             Console.WriteLine($"Curso Actual: {CursoActual}");
@@ -59,6 +60,7 @@ namespace Taller_Practico_POO.Models
             Console.WriteLine("Calificaciones: ");
             MostrarCalificaciones();
             CalcularPromedio();
+            Console.WriteLine("__________________________________________________________");
         }
 
         public static void EditarEstudiante(Estudiante estudiante) 

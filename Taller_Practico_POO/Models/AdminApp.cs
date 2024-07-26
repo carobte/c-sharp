@@ -99,7 +99,7 @@ namespace Taller_Practico_POO.Models
         {
             var estudiante1 = new Estudiante("Juan", "Pérez", "CC", "12345678", "juan.perez@example.com", "555-1234", "María Pérez", "décimo", new DateOnly(2000, 5, 12));
             var estudiante2 = new Estudiante("María", "Gómez", "TI", "87654321", "maria.gomez@example.com", "555-5678", "Luis Gómez", "noveno", new DateOnly(2007, 8, 24));
-            var estudiante3 = new Estudiante("Carlos", "Rodríguez", "CC", "11223344", "carlos.rodriguez@example.com", "555-9876", "Ana Rodríguez", "once", new DateOnly(2005, 3, 19));
+            var estudiante3 = new Estudiante("Carlos", "Rodríguez", "CC", "11223344", "carlos.rodriguez@example.com", "555-9876", "Ana María Rodríguez", "once", new DateOnly(2005, 3, 19));
             var estudiante4 = new Estudiante("Lucía", "Martínez", "TI", "44332211", "lucia.martinez@example.com", "555-6543", "Pedro Martínez", "octavo", new DateOnly(2008, 11, 5));
             var estudiante5 = new Estudiante("Pedro", "López", "CC", "99887766", "pedro.lopez@example.com", "555-3210", "Sofía López", "décimo", new DateOnly(2006, 1, 30));
 
@@ -111,9 +111,13 @@ namespace Taller_Practico_POO.Models
 
             estudiante1.AgregarCalificaciones(75);
             estudiante1.AgregarCalificaciones(85);
+            estudiante1.AgregarCalificaciones(95);
+            estudiante1.AgregarCalificaciones(95);
 
             estudiante2.AgregarCalificaciones(85);
+            estudiante2.AgregarCalificaciones(85);
             estudiante2.AgregarCalificaciones(55);
+            estudiante2.AgregarCalificaciones(65);
 
             estudiante3.AgregarCalificaciones(65);
             estudiante3.AgregarCalificaciones(100);
@@ -128,7 +132,7 @@ namespace Taller_Practico_POO.Models
 
         public static void AgregarProfesoresEj() // Datos quemados de ejemplo
         {
-            var profesor1 = new Profesor("Laura", "González", "CC", "123456789", "laura.gonzalez@example.com", "555-1111", "Matemáticas", 8000000, new DateTime(2015, 9, 1));
+            var profesor1 = new Profesor("Laura", "González", "CC", "123456789", "laura.gonzalez@example.com", "555-1111", "Matemáticas", 8000000, new DateTime(2000, 9, 1));
             var profesor2 = new Profesor("Jorge", "Martínez", "TI", "987654321", "jorge.martinez@example.com", "555-2222", "Historia", 8200000, new DateTime(2016, 3, 15));
             var profesor3 = new Profesor("Ana", "Rodríguez", "CC", "456123789", "ana.rodriguez@example.com", "555-3333", "Biología", 8500000, new DateTime(2017, 1, 10));
 
