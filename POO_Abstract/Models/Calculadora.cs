@@ -20,7 +20,6 @@ namespace POO_Abstract.Models
         public static double Multiplicar(double num, double num2){
             return num * num2;
         }
-
         
         public static double Dividir(double num, double num2){
             return num / num2;

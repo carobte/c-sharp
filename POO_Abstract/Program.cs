@@ -38,9 +38,9 @@ Console.WriteLine("Escribe otro número: ");
 var num2 = Convert.ToDouble(Console.ReadLine());
 
 Console.WriteLine($"Suma: {Calculadora.Sumar(num1, num2)}");
-Console.WriteLine($"Suma: {Calculadora.Restar(num1, num2)}");
-Console.WriteLine($"Suma: {Calculadora.Multiplicar(num1, num2)}");
-Console.WriteLine($"Suma: {Calculadora.Dividir(num1, num2)}");
+Console.WriteLine($"Resta: {Calculadora.Restar(num1, num2)}");
+Console.WriteLine($"Multiplicación: {Calculadora.Multiplicar(num1, num2)}");
+Console.WriteLine($"División: {Calculadora.Dividir(num1, num2)}");
 
 // Abstract 
 

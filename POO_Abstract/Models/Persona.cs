@@ -14,7 +14,7 @@ namespace POO_Abstract.Models
 
         public Persona(string nombre, string apellido)
         {
-            Id = Guid.NewGuid();
+            Id = Guid.NewGuid(); 
             Nombre = nombre;
             Apellido = apellido;
         }
