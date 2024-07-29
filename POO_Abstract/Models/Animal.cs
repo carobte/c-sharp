@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace POO_Abstract.Models
 {
-    public class Animal
+    public abstract class Animal
     {
         // get y set, formas de acceder
         protected int Id { get; set; }
@@ -19,9 +19,7 @@ namespace POO_Abstract.Models
             Especie = especie;
         }
 
-        protected void Saludar() {
-            Console.WriteLine($"Hola soy {Nombre}");
-        }
+        public abstract void Saludar();
     }
 
 
