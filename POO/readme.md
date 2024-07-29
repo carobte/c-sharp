@@ -23,7 +23,7 @@
 
 ## - Encapsulamiento
 
-- Ocultar los detalles de implementación (Evitar acceso directo a los datos) Public, Internal, Protected(solo sirve en esta clase o el alguna de las herencias), Private (solo sirve entre la clase)
+- Ocultar los detalles de implementación (Evitar acceso directo a los datos) Public, Internal, Protected(solo sirve en esta clase o el alguna de las herencias), Private (solo sirve entre la clase), Static.
 
 ## - Herencia
 
@@ -31,4 +31,4 @@
 
 ## - Polimorfismo
 
-- Usar objetos de diferentes clases con el mismo nombre y comportamiento (Evitar casts)
+- Sobreescritura de métodos. No se puede hacer polimorfismo sin herencia. En la clase padre, debe ponerse virtual en el método para que se pueda sobreescribir.
