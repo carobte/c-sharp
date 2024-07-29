@@ -8,20 +8,20 @@ namespace POO_Abstract.Models
     public class Animal
     {
         // get y set, formas de acceder
-        public int Id { get; set; }
-        public string? Nombre { get; set; }
-        public string? Especie {get;set;}
-/*         {
-            get { return Especie; }
-            set { Especie = value.Trim().ToLower(); }
-        } */
+        protected int Id { get; set; }
+        protected string? Nombre { get; set; }
+        protected string? Especie { get; set; }
 
-    public Animal(int id, string nombre, string especie)
-    {
-        Id = id;
-        Nombre = nombre;
-        Especie = especie;
-    }
+        public Animal(int id, string nombre, string especie)
+        {
+            Id = id;
+            Nombre = nombre;
+            Especie = especie;
+        }
+
+        protected void Saludar() {
+            Console.WriteLine($"Hola soy {Nombre}");
+        }
     }
 
 
