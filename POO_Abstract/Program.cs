@@ -26,3 +26,23 @@ Pueden ser heredadas. La clase puede ser abstract pero no
 obliga a sus propiedades y métodos a serlo.
 
 */
+
+// Ejemplos:
+
+// Static 
+
+Console.WriteLine("Escribe un número: ");
+var num1 = Convert.ToDouble(Console.ReadLine());
+
+Console.WriteLine("Escribe otro número: ");
+var num2 = Convert.ToDouble(Console.ReadLine());
+
+Console.WriteLine($"Suma: {Calculadora.Sumar(num1, num2)}");
+Console.WriteLine($"Suma: {Calculadora.Restar(num1, num2)}");
+Console.WriteLine($"Suma: {Calculadora.Multiplicar(num1, num2)}");
+Console.WriteLine($"Suma: {Calculadora.Dividir(num1, num2)}");
+
+// Abstract 
+
+var coder1 = new Coder("Caro", "Bte", "Dell");
+coder1.Saludar();
